@@ -13,7 +13,7 @@ let work = makeWorker();
 
 // call it
 work(); // what will it show?
-
+*/
 // Look at the code. What will be the result of the call at the last line?
 let phrase = "Hello";
 
@@ -26,7 +26,7 @@ if (true) {
 }
 
 sayHi();
-
+/*
 // Write function sum that works like this: sum(a)(b) = a+b
 function sum(a) {
     return function (b) {
@@ -89,7 +89,6 @@ console.log(users.sort(byField('age')));
 // Every function is meant to output its number. But something is wrong…
 function makeArmy() {
     let shooters = [];
-
     let i = 0;
     while (i < 10) {
         let j = i;
@@ -109,4 +108,12 @@ let army = makeArmy();
 // all shooters show 10 instead of their numbers 0, 1, 2, 3...
 army[0](); // 10 from the shooter number 0
 army[1](); // 10 from the shooter number 1
-army[2](); // 10 ...and so on.
+army[7](); // 10 ...and so on.
+
+if (true) {
+    let test = true; // use "let"
+}
+
+// alert(test); // ReferenceError: test is not defined
+
+alert(globalThis.EventCounts);
