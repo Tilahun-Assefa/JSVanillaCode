@@ -28,7 +28,6 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
     });
     console.log(numApples);
     console.log(numOrange);
-
 }
 
 
@@ -77,8 +76,13 @@ function kangaroo(x1, v1, x2, v2) {
 
 }
 
+<<<<<<< HEAD
 // console.log(kangaroo(0, 3, 4, 2));
 // console.log(kangaroo(0, 2, 5, 3));
+=======
+//console.log(kangaroo(0, 3, 4, 2));
+//console.log(kangaroo(0, 2, 5, 3));
+>>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
 
 /*
  * Complete the 'getTotalX' function below.
@@ -113,6 +117,7 @@ function getTotalX(a, b) {
     }
     return gcf.length;
 }
+
 /*
  * Complete the 'breakingRecords' function below.
  *
@@ -158,7 +163,6 @@ function birthday(s, d, m) {
             cnt++;
         }
     }
-
     return cnt;
 }
 
@@ -238,10 +242,10 @@ function dayOfProgrammer(year) {
     } else {
         day = 13;
     }
-
     return (day.toString() + "." + monthString + "." + yearString);
 }
 
+<<<<<<< HEAD
 // Complete the jumpingOnClouds function below.
 function jumpingOnClouds(c, k) {
     let e = 100;
@@ -265,11 +269,353 @@ function jumpingOnClouds(c, k) {
 
 /*
  * Complete the 'findDigits' function below.
+=======
+/*
+ * Complete the 'bonAppetit' function below.
+ *
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY bill
+ *  2. INTEGER k
+ *  3. INTEGER b
+ */
+
+function bonAppetit(bill, k, b) {
+    // Write your code here
+    let bCharged = b;
+    let bActual = 0;
+    let totalBill = 0;
+    let printMessage;
+    for (let i = 0; i < bill.length; i++) {
+        totalBill += bill[i];
+    }
+    bActual = (totalBill - bill[k]) / 2;
+    if (bCharged === bActual) {
+        printMessage = "Bon Appetit";
+    } else {
+        printMessage = bCharged - bActual;
+    }
+    console.log(printMessage);
+}
+
+
+/*
+ * Complete the 'sockMerchant' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER_ARRAY ar
+ */
+
+function sockMerchant(n, ar) {
+    // Write your code here
+    let distinctSocks = ar.filter((item, index) => {
+        return ar.indexOf(item) === index;
+    });
+    let pairs = 0;
+
+    for (let i = 0; i < distinctSocks.length; i++) {
+        let cnt = 0;
+        let sock = distinctSocks[i];
+        for (let j = 0; j < ar.length; j++) {
+            if (ar[j] === sock) {
+                cnt++;
+            }
+        }
+        pairs += parseInt(cnt / 2);
+    }
+    return pairs;
+}
+
+/*
+ * Complete the 'pageCount' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER p
+ */
+
+function pageCount(n, p) {
+    // Write your code here
+    let minTurn = parseInt(p / 2);
+    let numBack = 0;
+    if (n % 2 === 0) {
+        numBack = parseInt((n + 1 - p) / 2);
+    } else {
+        numBack = parseInt((n - p) / 2);
+    }
+    if (numBack < minTurn) {
+        minTurn = numBack;
+    }
+
+    return minTurn;
+}
+
+/*
+ * Complete the 'countingValleys' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER steps
+ *  2. STRING path
+ */
+
+function countingValleys(steps, path) {
+    // Write your code here
+    let level = 0;
+    let numValleys = 0
+    let arrPath = path.split("");
+
+    arrPath.forEach(element => {
+        if (element === "U") {
+            level++;
+        }
+        if (element === "D") {
+            if (level == 0) {
+                numValleys++;
+            }
+            level--;
+
+        }
+    });
+    return numValleys;
+}
+
+//countingValleys(8, "UDDDUDUU");
+
+/*
+ * Complete the getMoneySpent function below.
+ */
+function getMoneySpent(keyboards, drives, b) {
+    /*
+     * Write your code here.
+     */
+    let expensive = -1;
+    let sum;
+    keyboards.forEach((elem) => {
+        for (let i = 0; i < drives.length; i++) {
+            sum = elem + drives[i];
+            if ((sum > expensive) && (sum <= b)) {
+                expensive = sum;
+            }
+        }
+    });
+    return expensive;
+}
+
+// Complete the catAndMouse function below.
+function catAndMouse(x, y, z) {
+    let catADist = Math.abs(z - x);
+    let catBDist = Math.abs(z - y);
+    let result;
+    if (catADist < catBDist) {
+        result = "Cat A";
+    } else if (catBDist < catADist) {
+        result = "Cat B";
+    } else {
+        result = "Mouse C";
+    }
+    return result;
+}
+
+/*
+ * Complete the 'formingMagicSquare' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts 2D_INTEGER_ARRAY s as parameter.
+ */
+
+function formingMagicSquare(s) {
+    // Write your code here
+
+    let x1 = Math.abs(s[0][0] - 8) + Math.abs(s[0][1] - 1) + Math.abs(s[0][2] - 6) +
+        Math.abs(s[1][0] - 3) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 7) +
+        Math.abs(s[2][0] - 4) + Math.abs(s[2][1] - 9) + Math.abs(s[2][2] - 2);
+
+    let x2 = Math.abs(s[0][0] - 6) + Math.abs(s[0][1] - 1) + Math.abs(s[0][2] - 8) +
+        Math.abs(s[1][0] - 7) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 3) +
+        Math.abs(s[2][0] - 2) + Math.abs(s[2][1] - 9) + Math.abs(s[2][2] - 4);
+
+    let x3 = Math.abs(s[0][0] - 4) + Math.abs(s[0][1] - 3) + Math.abs(s[0][2] - 8) +
+        Math.abs(s[1][0] - 9) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 1) +
+        Math.abs(s[2][0] - 2) + Math.abs(s[2][1] - 7) + Math.abs(s[2][2] - 6);
+
+    let x4 = Math.abs(s[0][0] - 8) + Math.abs(s[0][1] - 3) + Math.abs(s[0][2] - 4) +
+        Math.abs(s[1][0] - 1) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 9) +
+        Math.abs(s[2][0] - 6) + Math.abs(s[2][1] - 7) + Math.abs(s[2][2] - 2);
+
+    let x5 = Math.abs(s[0][0] - 2) + Math.abs(s[0][1] - 9) + Math.abs(s[0][2] - 4) +
+        Math.abs(s[1][0] - 7) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 3) +
+        Math.abs(s[2][0] - 6) + Math.abs(s[2][1] - 1) + Math.abs(s[2][2] - 8);
+
+    let x6 = Math.abs(s[0][0] - 4) + Math.abs(s[0][1] - 9) + Math.abs(s[0][2] - 2) +
+        Math.abs(s[1][0] - 3) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 7) +
+        Math.abs(s[2][0] - 8) + Math.abs(s[2][1] - 1) + Math.abs(s[2][2] - 6);
+
+    let x7 = Math.abs(s[0][0] - 6) + Math.abs(s[0][1] - 7) + Math.abs(s[0][2] - 2) +
+        Math.abs(s[1][0] - 1) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 9) +
+        Math.abs(s[2][0] - 8) + Math.abs(s[2][1] - 3) + Math.abs(s[2][2] - 4);
+
+    let x8 = Math.abs(s[0][0] - 2) + Math.abs(s[0][1] - 7) + Math.abs(s[0][2] - 6) +
+        Math.abs(s[1][0] - 9) + Math.abs(s[1][1] - 5) + Math.abs(s[1][2] - 1) +
+        Math.abs(s[2][0] - 4) + Math.abs(s[2][1] - 3) + Math.abs(s[2][2] - 8);
+
+    let arr = [x1, x2, x3, x4, x5, x6, x7, x8];
+    let minCost = x1;
+
+    arr.forEach((elem) => {
+        if (elem < minCost) {
+            minCost = elem;
+        }
+    });
+
+    return minCost;
+}
+
+let sArr = [[5, 3, 4], [1, 5, 8], [6, 4, 2]];
+let mArr = [[4, 9, 2], [3, 5, 7], [8, 1, 5]];
+let dArr = [[4, 8, 2], [4, 5, 7], [6, 1, 6]];
+
+// console.log(formingMagicSquare(sArr));
+// console.log(formingMagicSquare(mArr));
+// console.log(formingMagicSquare(dArr));
+
+/*
+ * Complete the 'pickingNumbers' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY a as parameter.
+ */
+
+function pickingNumbers(a) {
+    // Write your code here
+    let longestSubArray = 0;
+    let arr = a.sort((a, b) => a - b);
+    for (let i = 0; i < arr.length; i++) {
+        let cnt = 0;
+        for (let j = i; j < arr.length; j++) {
+            if (Math.abs(arr[i] - arr[j]) <= 1) {
+                cnt++;
+            }
+        }
+        if (cnt > longestSubArray) {
+            longestSubArray = cnt;
+        }
+    }
+
+    return longestSubArray;
+}
+
+// console.log(pickingNumbers([1, 1, 2, 2, 4, 4, 5, 5, 5]));
+// console.log(pickingNumbers([4, 6, 5, 3, 3, 1]));
+
+/*
+ * Complete the 'climbingLeaderboard' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY ranked
+ *  2. INTEGER_ARRAY player
+ */
+// function climbingLeaderboard(ranked, player) {
+//     // Write your code here
+//     let result = [];
+//     player.forEach((score) => {
+//         ranked.push(score);
+//         let newRanked = ranked.sort((a, b) => b - a);
+//         let r = 1;
+//         let ranks = newRanked.map((el, i) => {
+//             if (i > 0 && el < ranked[i - 1]) {
+//                 r++;
+//             }
+//             return r;
+//         });
+//         let index = newRanked.indexOf(score);
+//         let rank = ranks[index];
+//         result.push(rank)
+//     });
+
+//     return result;
+// }
+
+function climbingLeaderboard(ranked, player) {
+    // Write your code here
+    let result = [];
+    let uniqueRanked = [...new Set(ranked)];
+    let index = uniqueRanked.length - 1;
+    player.forEach((score) => {
+        while (uniqueRanked[index] < score) {
+            index--;
+        }
+        if (score === uniqueRanked[index]) {
+            result.push(index + 1);
+        } else {
+            result.push(index + 2);
+        }
+    });
+    return result;
+}
+
+// console.log(climbingLeaderboard([100, 100, 90, 90, 80], [70, 80, 105]));
+// console.log(climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]));
+// console.log(climbingLeaderboard([100, 90, 90, 80, 75, 60], [50, 65, 77, 90, 102]));
+
+/*
+ * Complete the 'hurdleRace' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY height
+ */
+
+function hurdleRace(k, height) {
+    // Write your code here
+    let dose = 0;
+    height.forEach((h) => {
+        if (h > k && (h - k) > dose) {
+            dose = h - k;
+        }
+    });
+    return dose;
+}
+
+// console.log(hurdleRace(7, [2, 5, 4, 5, 2]));
+
+/*
+ * Complete the 'designerPdfViewer' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY h
+ *  2. STRING word
+ */
+
+function designerPdfViewer(h, word) {
+    // Write your code here
+    let maxHeight = h[0];
+    let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    word.split("").forEach((w) => {
+        let index = letters.indexOf(w);
+        if (h[index] > maxHeight) {
+            maxHeight = h[index];
+        }
+    });
+    return word.length * maxHeight;
+}
+
+// console.log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7], "zaba"));
+
+/*
+ * Complete the 'utopianTree' function below.
+>>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
  *
  * The function is expected to return an INTEGER.
  * The function accepts INTEGER n as parameter.
  */
 
+<<<<<<< HEAD
 function findDigits(n) {
     // Write your code here
     let arrNum = n.toString().split("");
@@ -284,3 +630,166 @@ function findDigits(n) {
 
 console.log(findDigits(12));
 console.log(findDigits(1012));
+=======
+function utopianTree(n) {
+    // Write your code here
+    let height = 1
+    if (n == 0) {
+        return height;
+    }
+    for (let i = 1; i <= n; i++) {
+        if (i % 2 !== 0) {
+            height *= 2;
+        } else {
+            height += 1;
+        }
+    }
+    return height;
+}
+
+// console.log(utopianTree(4));
+
+/*
+ * Complete the 'angryProfessor' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY a
+ */
+
+function angryProfessor(k, a) {
+    // Write your code here
+    let cnt = 0;
+    a.forEach((m) => {
+        if (m <= 0) {
+            cnt++;
+        }
+    });
+    if (cnt >= k) {
+        return "NO";
+    }
+    return "YES";
+}
+
+// console.log(angryProfessor(3, [-2, -1, 0, 1, 2]));
+
+
+/*
+ * Complete the 'beautifulDays' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER i
+ *  2. INTEGER j
+ *  3. INTEGER k
+ */
+
+function beautifulDays(i, j, k) {
+    // Write your code here
+    let cnt = 0;
+    for (let num = i; num <= j; num++) {
+        let rev = num.toString().split('').reverse().join('');
+        if ((num - parseInt(rev)) % k == 0) {
+            cnt++;
+        }
+    }
+    return cnt;
+}
+
+// console.log(beautifulDays(20, 23, 6));
+
+/*
+ * Complete the 'viralAdvertising' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER n as parameter.
+ */
+
+function viralAdvertising(n) {
+    // Write your code here
+    let cumlative = 0;
+    let start = 5;
+    for (let i = 0; i < n; i++) {
+        cumlative += Math.floor(start / 2);
+        start = Math.floor(start / 2) * 3;
+    }
+    return cumlative;
+}
+
+// console.log(viralAdvertising(1));
+// console.log(viralAdvertising(2));
+// console.log(viralAdvertising(3));
+// console.log(viralAdvertising(4));
+// console.log(viralAdvertising(5));
+
+
+/*
+ * Complete the 'saveThePrisoner' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER m
+ *  3. INTEGER s
+ */
+
+function saveThePrisoner(n, m, s) {
+    // Write your code here  
+    return (m + s - 1) % n || n;
+}
+
+// console.log(saveThePrisoner(7, 20, 1));
+// console.log(saveThePrisoner(3, 7, 3));
+// console.log(saveThePrisoner(352926151, 380324688, 94730870)); //122129406
+// console.log(saveThePrisoner(94431605, 679262176, 5284458));//23525398
+
+
+
+/*
+ * Complete the 'circularArrayRotation' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY a
+ *  2. INTEGER k
+ *  3. INTEGER_ARRAY queries
+ */
+
+function circularArrayRotation(a, k, queries) {
+    // Write your code here
+    let q = [];
+    for (let i = 0; i < k; i++) {
+        const el = a.pop();
+        a.unshift(el);
+    }
+    queries.forEach((m) => {
+        q.push(a[m]);
+    });
+    return q;
+}
+console.log(circularArrayRotation([1, 2, 3], 2, [0, 1, 2]));
+console.log(circularArrayRotation([3, 4, 5], 2, [1, 2]));
+
+/*
+ * Complete the 'permutationEquation' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY p as parameter.
+ */
+
+function permutationEquation(p) {
+    // Write your code here
+    let arr = [];
+    for (let i = 0; i < p.length; i++) {
+        const el = p.indexOf(i + 1);
+        arr.push(el);
+    }
+    let y = arr.map((n) => (n + 1));
+
+    let result = y.map((v) => p.indexOf(v) + 1);
+    return result;
+}
+
+console.log(permutationEquation([5, 2, 1, 3, 4]));
+>>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
