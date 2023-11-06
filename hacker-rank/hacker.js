@@ -76,13 +76,8 @@ function kangaroo(x1, v1, x2, v2) {
 
 }
 
-<<<<<<< HEAD
 // console.log(kangaroo(0, 3, 4, 2));
 // console.log(kangaroo(0, 2, 5, 3));
-=======
-//console.log(kangaroo(0, 3, 4, 2));
-//console.log(kangaroo(0, 2, 5, 3));
->>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
 
 /*
  * Complete the 'getTotalX' function below.
@@ -245,7 +240,6 @@ function dayOfProgrammer(year) {
     return (day.toString() + "." + monthString + "." + yearString);
 }
 
-<<<<<<< HEAD
 // Complete the jumpingOnClouds function below.
 function jumpingOnClouds(c, k) {
     let e = 100;
@@ -269,7 +263,6 @@ function jumpingOnClouds(c, k) {
 
 /*
  * Complete the 'findDigits' function below.
-=======
 /*
  * Complete the 'bonAppetit' function below.
  *
@@ -609,13 +602,11 @@ function designerPdfViewer(h, word) {
 
 /*
  * Complete the 'utopianTree' function below.
->>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
  *
  * The function is expected to return an INTEGER.
  * The function accepts INTEGER n as parameter.
  */
 
-<<<<<<< HEAD
 function findDigits(n) {
     // Write your code here
     let arrNum = n.toString().split("");
@@ -628,9 +619,9 @@ function findDigits(n) {
     return cnt;
 }
 
-console.log(findDigits(12));
-console.log(findDigits(1012));
-=======
+// console.log(findDigits(12));
+// console.log(findDigits(1012));
+
 function utopianTree(n) {
     // Write your code here
     let height = 1
@@ -792,7 +783,6 @@ function permutationEquation(p) {
 }
 
 // console.log(permutationEquation([5, 2, 1, 3, 4]));
->>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
 
 
 /*
@@ -814,7 +804,7 @@ function extraLongFactorials(n) {
     console.log(factorial.toString());
 }
 
-console.log(extraLongFactorials(25));
+// console.log(extraLongFactorials(25));
 
 
 
@@ -871,7 +861,7 @@ function multiply(x, res, res_size) {
 }
 
 // Driver program
-factorial(5);
+// factorial(5);
 
 /*
  * Complete the 'appendAndDelete' function below.
