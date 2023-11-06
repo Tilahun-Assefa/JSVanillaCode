@@ -77,7 +77,7 @@ function formatDate(date) {
     if (dateDiff < 60 * 60 * 1000) {
         return `${Math.round(dateDiff / (60 * 1000))} min. ago`;
     }
-    return `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()} ${date.getHours()} : ${date.getMinutes()}`;
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()} : ${date.getMinutes()}`;
 }
 
 console.log(formatDate(new Date(new Date - 1))); // "right now"
@@ -88,3 +88,29 @@ console.log(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 min. ago"
 
 // yesterday's date like 31.12.16 20:00
 console.log(formatDate(new Date(new Date - 86400 * 1000)));
+
+/*
+ * Complete the 'dayOfProgrammer' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts INTEGER year as parameter.
+ */
+
+function dayOfProgrammer(year) {
+    // Write your code here
+    let monthString = "09";
+    let yearString = year.toString();
+    let day;
+
+    if (year < 1800 && year % 4 === 0) {
+        day = 12
+    } else if (year >1800 && (year % 4==0 && year % 100 !=0)) {
+        day = 12;
+    }else if(year >1800 && (year % 400==0)){
+        day=12
+    }else{
+        day =13;
+    }
+
+    return (day.toString() + "." + monthString + "." + yearString);
+}
