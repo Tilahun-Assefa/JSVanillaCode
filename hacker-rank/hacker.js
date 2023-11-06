@@ -721,8 +721,8 @@ function circularArrayRotation(a, k, queries) {
     });
     return q;
 }
-console.log(circularArrayRotation([1, 2, 3], 2, [0, 1, 2]));
-console.log(circularArrayRotation([3, 4, 5], 2, [1, 2]));
+// console.log(circularArrayRotation([1, 2, 3], 2, [0, 1, 2]));
+// console.log(circularArrayRotation([3, 4, 5], 2, [1, 2]));
 
 /*
  * Complete the 'permutationEquation' function below.
@@ -744,4 +744,99 @@ function permutationEquation(p) {
     return result;
 }
 
-console.log(permutationEquation([5, 2, 1, 3, 4]));
+// console.log(permutationEquation([5, 2, 1, 3, 4]));
+
+/*
+ * Complete the 'extraLongFactorials' function below.
+ *
+ * The function accepts INTEGER n as parameter.
+ */
+
+function extraLongFactorials(n) {
+    // Write your code here
+    // if (n === 1) {
+    //     return 1;
+    // }
+    // return extraLongFactorials(n - 1) * n;
+    let factorial = 1n;
+    for (let i = n; n > 0; n--) {
+        factorial *= BigInt(n);
+    }
+    console.log(factorial.toString());
+}
+
+console.log(extraLongFactorials(25));
+
+
+
+// Javascript program to compute factorial of big numbers
+
+// This function finds factorial of large numbers
+// and prints them
+function factorial(n) {
+    let res = new Array(200);
+
+    // Initialize result
+    res[0] = 1;
+    let res_size = 1;
+
+    // Apply simple factorial formula n! = 1 * 2 * 3 * 4...*n
+    for (let x = 2; x <= n; x++)
+        res_size = multiply(x, res, res_size);
+
+    let display = [];
+    for (let i = res_size - 1; i >= 0; i--) {
+        display.push(res[i]);
+    }
+    console.log(display.join(''));
+}
+
+// This function multiplies x with the number 
+// represented by res[].
+// res_size is size of res[] or number of digits in the 
+// number represented by res[]. This function uses simple 
+// school mathematics for multiplication.
+// This function may value of res_size and returns the 
+// new value of res_size
+function multiply(x, res, res_size) {
+    let carry = 0; // Initialize carry
+
+    // One by one multiply n with individual digits of res[]
+    for (let i = 0; i < res_size; i++) {
+        let prod = res[i] * x + carry;
+
+        // Store last digit of 'prod' in res[] 
+        res[i] = prod % 10;
+
+        // Put rest in carry
+        carry = Math.floor(prod / 10);
+    }
+
+    // Put carry in res and increase result size
+    while (carry) {
+        res[res_size] = carry % 10;
+        carry = Math.floor(carry / 10);
+        res_size++;
+    }
+    return res_size;
+}
+
+// Driver program
+factorial(5);
+
+/*
+ * Complete the 'appendAndDelete' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. STRING s
+ *  2. STRING t
+ *  3. INTEGER k
+ */
+
+function appendAndDelete(s, t, k) {
+    // Write your code here
+
+}
+
+
