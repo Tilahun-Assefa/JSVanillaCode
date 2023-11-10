@@ -76,13 +76,8 @@ function kangaroo(x1, v1, x2, v2) {
 
 }
 
-<<<<<<< HEAD
-// console.log(kangaroo(0, 3, 4, 2));
-// console.log(kangaroo(0, 2, 5, 3));
-=======
 //console.log(kangaroo(0, 3, 4, 2));
 //console.log(kangaroo(0, 2, 5, 3));
->>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
 
 /*
  * Complete the 'getTotalX' function below.
@@ -245,31 +240,6 @@ function dayOfProgrammer(year) {
     return (day.toString() + "." + monthString + "." + yearString);
 }
 
-<<<<<<< HEAD
-// Complete the jumpingOnClouds function below.
-function jumpingOnClouds(c, k) {
-    let e = 100;
-    let n = c.length;
-    let cnt = 1;
-    let i = 0
-    do {
-        e--;
-        if (c[(i + k) % n] === 1) {
-            e -= 2;
-        }
-        i += k;
-        console.log("jump", cnt, "Energy", e);
-        cnt++;
-    } while (i % n != 0)
-    return e;
-}
-
-// console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 1, 0], 2));
-// console.log(jumpingOnClouds([1, 1, 1, 0, 1, 1, 0, 0, 0, 0], 3));
-
-/*
- * Complete the 'findDigits' function below.
-=======
 /*
  * Complete the 'bonAppetit' function below.
  *
@@ -609,28 +579,11 @@ function designerPdfViewer(h, word) {
 
 /*
  * Complete the 'utopianTree' function below.
->>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
  *
  * The function is expected to return an INTEGER.
  * The function accepts INTEGER n as parameter.
  */
 
-<<<<<<< HEAD
-function findDigits(n) {
-    // Write your code here
-    let arrNum = n.toString().split("");
-    let cnt = 0;
-    arrNum.forEach(el => {
-        if (n % parseInt(el) === 0) {
-            cnt++;
-        }
-    });
-    return cnt;
-}
-
-console.log(findDigits(12));
-console.log(findDigits(1012));
-=======
 function utopianTree(n) {
     // Write your code here
     let height = 1
@@ -792,7 +745,6 @@ function permutationEquation(p) {
 }
 
 // console.log(permutationEquation([5, 2, 1, 3, 4]));
->>>>>>> a25737f63acf11e0c0ad19361bd6616edc846bf0
 
 
 /*
@@ -887,5 +839,59 @@ function appendAndDelete(s, t, k) {
     // Write your code here
 
 }
+
+/*
+ * Complete the 'libraryFine' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER d1
+ *  2. INTEGER m1
+ *  3. INTEGER y1
+ *  4. INTEGER d2
+ *  5. INTEGER m2
+ *  6. INTEGER y2
+ */
+
+function libraryFine(d1, m1, y1, d2, m2, y2) {
+    // Write your code here
+
+    if (y1 < y2) {
+        return 0;
+    }
+    if (y1 > y2) {
+        return 10000;
+    }
+    if (y1 === y2) {
+        if (m1 < m2) {
+            return 0;
+        }
+        if (m1 > m2) {
+            return (m1 - m2) * 500;
+        }
+        if (m1 === m2) {
+            return d1 <= d2 ? 0 : (d1 - d2) * 15;
+        }
+
+    }
+    // return y1 > y2 ? 10000 : m1 > m2 ? (m1 - m2) * 500 : d1 > d2 ? ((d1 - d2) * 15) : 0;
+
+}
+// console.log(libraryFine(9, 6, 2015, 6, 6, 2015)); //45
+// console.log(libraryFine(14, 7, 2018, 5, 7, 2018)); //135
+// console.log(libraryFine(14, 7, 2019, 5, 7, 2018));  //10000
+
+/*
+ * Complete the 'cutTheSticks' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY arr as parameter.
+ */
+
+function cutTheSticks(arr) {
+    // Write your code here
+
+}
+
 
 
