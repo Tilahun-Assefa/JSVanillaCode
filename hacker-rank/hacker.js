@@ -806,7 +806,7 @@ function extraLongFactorials(n) {
     console.log(factorial.toString());
 }
 
-// console.log(extraLongFactorials(25));
+console.log(extraLongFactorials(25));
 
 
 
@@ -880,4 +880,99 @@ function appendAndDelete(s, t, k) {
 
 }
 
+/*
+ * Complete the 'libraryFine' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER d1
+ *  2. INTEGER m1
+ *  3. INTEGER y1
+ *  4. INTEGER d2
+ *  5. INTEGER m2
+ *  6. INTEGER y2
+ */
 
+function libraryFine(d1, m1, y1, d2, m2, y2) {
+    // Write your code here
+
+    if (y1 < y2) {
+        return 0;
+    }
+    if (y1 > y2) {
+        return 10000;
+    }
+    if (y1 === y2) {
+        if (m1 < m2) {
+            return 0;
+        }
+        if (m1 > m2) {
+            return (m1 - m2) * 500;
+        }
+        if (m1 === m2) {
+            return d1 <= d2 ? 0 : (d1 - d2) * 15;
+        }
+
+    }
+    // return y1 > y2 ? 10000 : m1 > m2 ? (m1 - m2) * 500 : d1 > d2 ? ((d1 - d2) * 15) : 0;
+
+}
+// console.log(libraryFine(9, 6, 2015, 6, 6, 2015)); //45
+// console.log(libraryFine(14, 7, 2018, 5, 7, 2018)); //135
+// console.log(libraryFine(14, 7, 2019, 5, 7, 2018));  //10000
+
+/*
+ * Complete the 'cutTheSticks' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY arr as parameter.
+ */
+
+function cutTheSticks(arr) {
+    // Write your code here
+
+}
+
+/*
+ * Complete the 'nonDivisibleSubset' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY s
+ */
+
+function nonDivisibleSubset(k, a) {
+    // Write your code here
+    let s = [...new Set(a)];
+    let lenSubset = 0;
+    let arr = [];
+    for (let i = 0; i < s.length - 1; i++) {
+        arr[i] = [];
+        arr[i].push(s[i]);
+        for (let j = i + 1; j < s.length; j++) {
+            let flag = true;
+            arr[i].forEach((el) => {
+                if ((el + s[j]) % k === 0) {
+                    flag = false;
+                }
+            });
+            if (flag) {
+                arr[i].push(s[j]);
+            }
+        }
+        if (arr[i].length > lenSubset) {
+            lenSubset = arr[i].length;
+        }
+        console.log(arr[i]);
+    }
+    return lenSubset;
+}
+
+console.log(nonDivisibleSubset(4, [19, 10, 12, 10, 24, 22, 25])); //s1= [10,2,25], s2 =[19,22,24]
+console.log(nonDivisibleSubset(3, [1, 7, 2, 4])); //s=[1,7,4]
+console.log(nonDivisibleSubset(5, [770528134, 663501748, 384261537, 800309024, 103668401, 538539662, 385488901,
+    101262949, 557792122, 46058493])); //6
+
+console.log(nonDivisibleSubset(11, [582740017, 954896345, 590538156, 298333230, 859747706, 155195851,
+     331503493, 799588305, 164222042, 563356693, 80522822, 432354938, 652248359])); //11
