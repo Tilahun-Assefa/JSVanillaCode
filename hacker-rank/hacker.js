@@ -766,7 +766,7 @@ function extraLongFactorials(n) {
     console.log(factorial.toString());
 }
 
-console.log(extraLongFactorials(25));
+// console.log(extraLongFactorials(25));
 
 
 
@@ -893,5 +893,46 @@ function cutTheSticks(arr) {
 
 }
 
+/*
+ * Complete the 'nonDivisibleSubset' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY s
+ */
 
+function nonDivisibleSubset(k, a) {
+    // Write your code here
+    let s = [...new Set(a)];
+    let lenSubset = 0;
+    let arr = [];
+    for (let i = 0; i < s.length - 1; i++) {
+        arr[i] = [];
+        arr[i].push(s[i]);
+        for (let j = i + 1; j < s.length; j++) {
+            let flag = true;
+            arr[i].forEach((el) => {
+                if ((el + s[j]) % k === 0) {
+                    flag = false;
+                }
+            });
+            if (flag) {
+                arr[i].push(s[j]);
+            }
+        }
+        if (arr[i].length > lenSubset) {
+            lenSubset = arr[i].length;
+        }
+        console.log(arr[i]);
+    }
+    return lenSubset;
+}
 
+console.log(nonDivisibleSubset(4, [19, 10, 12, 10, 24, 22, 25])); //s1= [10,2,25], s2 =[19,22,24]
+console.log(nonDivisibleSubset(3, [1, 7, 2, 4])); //s=[1,7,4]
+console.log(nonDivisibleSubset(5, [770528134, 663501748, 384261537, 800309024, 103668401, 538539662, 385488901,
+    101262949, 557792122, 46058493])); //6
+
+console.log(nonDivisibleSubset(11, [582740017, 954896345, 590538156, 298333230, 859747706, 155195851,
+     331503493, 799588305, 164222042, 563356693, 80522822, 432354938, 652248359])); //11
