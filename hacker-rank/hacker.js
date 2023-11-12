@@ -76,8 +76,10 @@ function kangaroo(x1, v1, x2, v2) {
 
 }
 
+
 // console.log(kangaroo(0, 3, 4, 2));
 // console.log(kangaroo(0, 2, 5, 3));
+
 
 /*
  * Complete the 'getTotalX' function below.
@@ -875,94 +877,7 @@ function multiply(x, res, res_size) {
 
 function appendAndDelete(s, t, k) {
     // Write your code here
-    let i = 0;
-    let sLen = s.length;
-    let tLen = t.length;
-    while (s[i] === t[i] && i < sLen && i < tLen) {
-        i++;
-    }
 
-    let del = sLen - i;
-    let append = tLen - i;
-    //i === 0
-    if (k >= (sLen + tLen)) {
-        return "Yes";
-    }
-
-    //i > 0 
-    if (i > 0) {
-        if (k < (sLen + tLen) && k >= (del + append) && ((k - (del + append)) % 2 === 0)) {
-            return "Yes";
-        }
-    }
-
-    return "No";
 }
-
-// console.log(appendAndDelete("abc", "def", 6));   //Yes
-// console.log(appendAndDelete("y", "yu", 2));   //No
-// console.log(appendAndDelete("zzzzz", "zzzzzzz", 4));   //Yes
-// console.log(appendAndDelete("aba", "aba", 7));   //Yes
-// console.log(appendAndDelete("hackerhappy", "hackerrank", 9));   //Yes
-// console.log(appendAndDelete("ashley", "ash", 2));   //No
-
-/*
- * Complete the 'squares' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts following parameters:
- *  1. INTEGER a
- *  2. INTEGER b
- */
-
-function squares(a, b) {
-    // Write your code here
-    let cntSquare = 0;
-    for (let i = a; i <= b; i++) {
-        // if ((i - 1) % 8 === 0 || i % 4 === 0) {
-        //     //find square root
-        //     let x1 = 1, x2 = i / 2;
-        //     if (x1 * x1 === i) {
-        //         cntSquare++;
-        //     }
-        //     if (x2 * x2 === i) {
-        //         cntSquare++;
-        //     }
-        //     let diff = Math.abs(x2 - x1);
-        //     let mid;
-        //     while (diff > 1) {
-        //         if (x1 * x1 < i && x2 * x2 > i) {
-        //             mid = parseInt((x1 + x2) / 2);
-        //         }
-        //         if (mid * mid === i) {
-        //             cntSquare++;
-        //             break;
-        //         }
-        //         if (mid * mid > i) {
-        //             x2 = mid;
-        //         } else {
-        //             x1 = mid;
-        //         }
-        //         diff = Math.abs(x2 - x1);
-        //     }           
-        // }
-        if (Number.isInteger(Math.sqrt(i))) {
-            i += Math.sqrt(i) * 2
-            // to rapidly increase i else timout will
-            // happen since counting sq root of every 
-            // element will take huge time
-            // (a+1)^2  - a^2 = 2a+1... is the difference
-            // between two consecutive square nos.
-            cntSquare++;
-        }
-    }
-    return cntSquare;
-}
-
-console.log(squares(3, 9)); //2
-console.log(squares(17, 24));//0
-console.log(squares(24, 49));//3
-console.log(squares(465868129, 988379794)); //9855
-
 
 
