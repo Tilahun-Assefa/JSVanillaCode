@@ -823,7 +823,7 @@ function multiply(x, res, res_size) {
 }
 
 // Driver program
-factorial(5);
+// factorial(5);
 
 /*
  * Complete the 'appendAndDelete' function below.
@@ -902,15 +902,18 @@ function cutTheSticks(arr) {
  *  2. INTEGER_ARRAY s
  */
 
-function nonDivisibleSubset(k, a) {
+function nonDivisibleSubsetTil(k, a) {
     // Write your code here
     let s = [...new Set(a)];
     let lenSubset = 0;
     let arr = [];
-    for (let i = 0; i < s.length - 1; i++) {
+    for (let i = 0; i < s.length; i++) {
         arr[i] = [];
         arr[i].push(s[i]);
-        for (let j = i + 1; j < s.length; j++) {
+        for (let j = 0; j < s.length; j++) {
+            if (j === i) {
+                continue;
+            }
             let flag = true;
             arr[i].forEach((el) => {
                 if ((el + s[j]) % k === 0) {
@@ -929,10 +932,56 @@ function nonDivisibleSubset(k, a) {
     return lenSubset;
 }
 
-console.log(nonDivisibleSubset(4, [19, 10, 12, 10, 24, 22, 25])); //s1= [10,2,25], s2 =[19,22,24]
-console.log(nonDivisibleSubset(3, [1, 7, 2, 4])); //s=[1,7,4]
-console.log(nonDivisibleSubset(5, [770528134, 663501748, 384261537, 800309024, 103668401, 538539662, 385488901,
-    101262949, 557792122, 46058493])); //6
+function nonDivisibleSubset(k, s) {
+    // Write your code here
+    let result = 0;
+    let arr = [...new Set(s)];
+    let mod = [];
+    for (let i = 0; i < k; i++) {
+        mod.push((arr.filter((el) => el % k === i)).length);
+    }
+    for (let j = 0; j < (parseInt(k / 2 + 1)); j++) {
+        if (j === 0 || j === k / 2) {
+            result += mod[j] > 0 ? 1 : 0;
+        } else {
+            result += Math.max(mod[j], mod[k - j]);
+        }
+    }
+    console.log(mod);
+    return result;
+}
 
-console.log(nonDivisibleSubset(11, [582740017, 954896345, 590538156, 298333230, 859747706, 155195851,
-     331503493, 799588305, 164222042, 563356693, 80522822, 432354938, 652248359])); //11
+// console.log(nonDivisibleSubset(1, [1])); //s1= [1], 1
+// console.log(nonDivisibleSubset(4, [19, 10, 12, 10, 24, 22, 25])); //s1= [10,2,25], 3
+// console.log(nonDivisibleSubset(3, [1, 7, 2, 4])); //s=[1,7,4], 3
+// console.log(nonDivisibleSubset(5, [770528134, 663501748, 384261537, 800309024, 103668401, 538539662, 385488901,
+//     101262949, 557792122, 46058493])); //6
+// console.log(nonDivisibleSubset(11, [582740017, 954896345, 590538156, 298333230, 859747706, 155195851,
+// 331503493, 799588305, 164222042, 563356693, 80522822, 432354938, 652248359])); //11
+
+
+/*
+* Complete the 'repeatedString' function below.
+*
+* The function is expected to return a LONG_INTEGER.
+* The function accepts following parameters:
+*  1. STRING s
+*  2. LONG_INTEGER n
+*/
+
+function repeatedString(s, n) {
+    // Write your code here
+    let counta = 0;
+    let freq = 0;
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === 'a') {
+            freq++;
+        }
+    }
+    counta = parseInt(n/s.length)*freq;
+
+    return counta;
+}
+
+console.log(repeatedString('aba',10)); //7
+console.log(repeatedString('a',10000)); //10000
