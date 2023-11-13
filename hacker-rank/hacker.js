@@ -806,7 +806,7 @@ function extraLongFactorials(n) {
     console.log(factorial.toString());
 }
 
-console.log(extraLongFactorials(25));
+// console.log(extraLongFactorials(25));
 
 
 
@@ -1013,15 +1013,78 @@ function repeatedString(s, n) {
     // Write your code here
     let counta = 0;
     let freq = 0;
+    let indexa = [];
     for (let i = 0; i < s.length; i++) {
         if (s[i] === 'a') {
             freq++;
         }
+        indexa.push(freq);
     }
-    counta = parseInt(n/s.length)*freq;
+    console.log(indexa);
+    if (n % s.length === 0) {
+        counta = parseInt(n / s.length) * freq;
+    } else {
+        counta = parseInt(n / s.length) * freq + indexa[n % s.length - 1];
+    }
 
     return counta;
 }
 
-console.log(repeatedString('aba',10)); //7
-console.log(repeatedString('a',10000)); //10000
+// console.log(repeatedString('aba', 11)); //7
+// console.log(repeatedString('a', 10000)); //10000
+
+/*
+ * Complete the 'jumpingOnClouds' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY c as parameter.
+ */
+
+function jumpingOnClouds(c) {
+    // Write your code here
+    let cntJump = 0;
+    let i = 0;
+    while (i < c.length - 1) {
+        if (c[i + 2] === 0) {
+            i += 2;
+        } else if (c[i + 1] === 0) {
+            i++;
+        } else {
+            break;
+        }
+        cntJump++;
+    }
+    return cntJump;
+}
+
+// console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])); //4
+// console.log(jumpingOnClouds([0, 0, 0, 0, 1, 0])); //3
+// console.log(jumpingOnClouds([0, 1, 0, 0, 0, 1, 0])); //3
+
+/*
+ * Complete the 'equalizeArray' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY arr as parameter.
+ */
+
+function equalizeArray(arr) {
+    // Write your code here
+    let unArr = [... new Set(arr)];
+    let maxLen = 0;
+    for (let i = 0; i < unArr.length; i++) {
+        let cnt=0;
+        arr.forEach(el => {
+            if(el === unArr[i]){
+                cnt++;
+            }
+        });    
+        if(cnt > maxLen){
+            maxLen = cnt;
+        }    
+    }
+    return (arr.length - maxLen);
+}
+
+console.log(equalizeArray([1,2,2,3])); //2
+console.log(equalizeArray([3,3,2,1,3])); //2
