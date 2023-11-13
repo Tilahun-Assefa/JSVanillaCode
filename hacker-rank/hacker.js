@@ -76,8 +76,10 @@ function kangaroo(x1, v1, x2, v2) {
 
 }
 
-//console.log(kangaroo(0, 3, 4, 2));
-//console.log(kangaroo(0, 2, 5, 3));
+
+// console.log(kangaroo(0, 3, 4, 2));
+// console.log(kangaroo(0, 2, 5, 3));
+
 
 /*
  * Complete the 'getTotalX' function below.
@@ -240,6 +242,29 @@ function dayOfProgrammer(year) {
     return (day.toString() + "." + monthString + "." + yearString);
 }
 
+// Complete the jumpingOnClouds function below.
+function jumpingOnClouds(c, k) {
+    let e = 100;
+    let n = c.length;
+    let cnt = 1;
+    let i = 0
+    do {
+        e--;
+        if (c[(i + k) % n] === 1) {
+            e -= 2;
+        }
+        i += k;
+        console.log("jump", cnt, "Energy", e);
+        cnt++;
+    } while (i % n != 0)
+    return e;
+}
+
+// console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 1, 0], 2));
+// console.log(jumpingOnClouds([1, 1, 1, 0, 1, 1, 0, 0, 0, 0], 3));
+
+/*
+ * Complete the 'findDigits' function below.
 /*
  * Complete the 'bonAppetit' function below.
  *
@@ -584,6 +609,21 @@ function designerPdfViewer(h, word) {
  * The function accepts INTEGER n as parameter.
  */
 
+function findDigits(n) {
+    // Write your code here
+    let arrNum = n.toString().split("");
+    let cnt = 0;
+    arrNum.forEach(el => {
+        if (n % parseInt(el) === 0) {
+            cnt++;
+        }
+    });
+    return cnt;
+}
+
+// console.log(findDigits(12));
+// console.log(findDigits(1012));
+
 function utopianTree(n) {
     // Write your code here
     let height = 1
@@ -766,7 +806,7 @@ function extraLongFactorials(n) {
     console.log(factorial.toString());
 }
 
-// console.log(extraLongFactorials(25));
+console.log(extraLongFactorials(25));
 
 
 
