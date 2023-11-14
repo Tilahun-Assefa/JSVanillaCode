@@ -1073,18 +1073,40 @@ function equalizeArray(arr) {
     let unArr = [... new Set(arr)];
     let maxLen = 0;
     for (let i = 0; i < unArr.length; i++) {
-        let cnt=0;
+        let cnt = 0;
         arr.forEach(el => {
-            if(el === unArr[i]){
+            if (el === unArr[i]) {
                 cnt++;
             }
-        });    
-        if(cnt > maxLen){
+        });
+        if (cnt > maxLen) {
             maxLen = cnt;
-        }    
+        }
     }
     return (arr.length - maxLen);
 }
 
-console.log(equalizeArray([1,2,2,3])); //2
-console.log(equalizeArray([3,3,2,1,3])); //2
+console.log(equalizeArray([1, 2, 2, 3])); //2
+console.log(equalizeArray([3, 3, 2, 1, 3])); //2
+
+/*
+ * Complete the 'queensAttack' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER k
+ *  3. INTEGER r_q
+ *  4. INTEGER c_q
+ *  5. 2D_INTEGER_ARRAY obstacles
+ */
+
+function queensAttack(n, k, r_q, c_q, obstacles) {
+    // Write your code here
+    let numSquare;
+
+    return numSquare;
+}
+
+console.log(queensAttack(4, 0, 4, 4, []));  //9
+console.log(queensAttack(5, 3, 4, 3, [[5, 5], [4, 2], [2, 3]]));    //10
