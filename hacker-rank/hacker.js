@@ -1086,8 +1086,8 @@ function equalizeArray(arr) {
     return (arr.length - maxLen);
 }
 
-console.log(equalizeArray([1, 2, 2, 3])); //2
-console.log(equalizeArray([3, 3, 2, 1, 3])); //2
+// console.log(equalizeArray([1, 2, 2, 3])); //2
+// console.log(equalizeArray([3, 3, 2, 1, 3])); //2
 
 /*
  * Complete the 'queensAttack' function below.
@@ -1104,9 +1104,127 @@ console.log(equalizeArray([3, 3, 2, 1, 3])); //2
 function queensAttack(n, k, r_q, c_q, obstacles) {
     // Write your code here
     let numSquare;
+    let row, col, diagRightTop, diagRightBottom, diagLeftBottom, diagLeftTop;
 
+    //first calculate with no obstacles
+    if (k === 0) {
+        row = (n - c_q) + (c_q - 1);
+        col = (n - r_q) + (r_q - 1);
+        diagRightTop = (n - r_q > n - c_q ? n - c_q : n - r_q);
+        diagLeftBottom = (r_q - 1 > c_q - 1 ? c_q - 1 : r_q - 1);
+        diagRightBottom = (n - c_q > r_q - 1 ? r_q - 1 : n - c_q);
+        diagLeftTop = (n - r_q > c_q - 1 ? c_q - 1 : n - r_q);
+        numSquare = row + col + diagRightTop + diagLeftBottom + diagRightBottom + diagLeftTop;
+        return numSquare;
+    }
+
+    //same row left side
+    // let c_ObLeft = 1;
+    let minColLeftDiff = c_q - 1;
+
+    //same row right side
+    // let c_ObRight = n;
+    let minColRightDiff = n - c_q;
+
+    //same column top side
+    // let r_ObTop = n;
+    let minRowTopDiff = n - r_q;
+
+    //same column bottom side
+    // let r_ObBottom = 1;
+    let minRowBottomDiff = r_q - 1;
+
+    //obstacles at right top diagonal
+    // let d_ObRightTopRow = n;
+    // let d_ObRightTopCol = n;
+    let minDiagRightTop = n - c_q < n - r_q ? n - c_q : n - r_q;
+
+    //obstacles at right bottom diagonal
+    // let d_ObRightBottomRow = 1;
+    // let d_ObRightBottomCol = n;
+    let minDiagRightBottom = n - c_q < r_q - 1 ? n - c_q : r_q - 1;
+
+    //obstacles at left top diagonal
+    // let d_ObLeftTopRow = n;
+    // let d_ObLeftTopCol = 1;
+    let minDiagLeftTop = c_q - 1 < n - r_q ? c_q - 1 : n - r_q;
+
+    //obstacles at left bottom diagonal
+    // let d_ObLeftBottomRow = 1;
+    // let d_ObLeftBottomCol = 1;
+    let minDiagLeftBottom = c_q - 1 < r_q - 1 ? c_q - 1 : r_q - 1;
+
+    //substract for obstacles
+    obstacles.forEach(ob => {
+        console.log(ob[0], ob[1]);
+
+        if (ob[0] === r_q) {    //same row with the queen
+            //left side
+            if (ob[1] < c_q && c_q - ob[1] < minColLeftDiff) {
+                minColLeftDiff = c_q - ob[1] - 1;
+                // c_ObLeft = ob[1];
+            }
+            //right side
+            if (c_q < ob[1] && ob[1] - c_q < minColRightDiff) {
+                minColRightDiff = ob[1] - c_q - 1;
+                // c_ObRight = ob[1];
+            }
+        } else if (ob[1] === c_q) {     //same column with queen
+            //top
+            if (r_q < ob[0] && ob[0] - r_q < minRowTopDiff) {
+                minRowTopDiff = ob[0] - r_q - 1;
+                // r_ObTop = ob[0];
+            }
+            if (ob[0] < r_q && r_q - ob[0] < minRowBottomDiff) {
+                minRowBottomDiff = r_q - ob[0] - 1;
+                // r_ObBottom = ob[0];
+            }
+        } else if ((ob[0] - r_q > 0 && ob[1] - c_q > 0) && (ob[0] - r_q === ob[1] - c_q) && ob[0] <= n & ob[1] <= n) {    //diag right top
+            if (ob[0] - r_q < minDiagRightTop) {
+                minDiagRightTop = ob[0] - r_q - 1;
+            }
+            // d_ObRightTopRow = ob[0];
+            // d_ObRightTopCol = ob[1];
+        } else if ((r_q - ob[0] > 0 && c_q - ob[1] > 0) && (r_q - ob[0] === c_q - ob[1]) && ob[0] >= 1 & ob[1] >= 1) {    //diag left bottom
+            if (r_q - ob[0] < minDiagLeftBottom) {
+                minDiagLeftBottom = r_q - ob[0] - 1;
+            }
+            // d_ObLeftBottomRow = ob[0];
+            // d_ObLeftBottomCol = ob[1];
+        } else if ((r_q - ob[0] > 0 && ob[1] - c_q > 0) && (r_q - ob[0] === ob[1] - c_q) && ob[0] >= 1 & ob[1] <= n) {    //diag right bottom
+            if (r_q - ob[0] < minDiagRightBottom) {
+                minDiagRightBottom = r_q - ob[0] - 1;
+            }
+            // d_ObRightBottomRow = ob[0];
+            // d_ObRightBottomCol = ob[1];
+        } else if ((c_q - ob[1] > 0 && ob[0] - r_q > 0) && (ob[0] - r_q === c_q - ob[1]) && ob[0] <= n & ob[1] >= 1) {    //diag left top
+            if (ob[0] - r_q < minDiagLeftTop) {
+                minDiagLeftTop = ob[0] - r_q - 1;
+            }
+            // d_ObLeftTopRow = ob[0];
+            // d_ObLeftTopCol = ob[1];
+        }
+    });
+    row = minColLeftDiff + minColRightDiff;
+    col = minRowTopDiff + minRowBottomDiff;
+
+    numSquare = row + col + minDiagRightTop + minDiagRightBottom + minDiagLeftBottom + minDiagLeftTop;
+
+    console.log("Row: ", row, " Column: ", col, " DiagRT: ", minDiagRightTop, " DiagLB: ", minDiagRightBottom, " DiagRB: ", minDiagLeftBottom, " DiagLT: ", minDiagLeftTop);
     return numSquare;
 }
 
+console.log(queensAttack(8, 0, 4, 4, []));  //9
 console.log(queensAttack(4, 0, 4, 4, []));  //9
 console.log(queensAttack(5, 3, 4, 3, [[5, 5], [4, 2], [2, 3]]));    //10
+console.log(queensAttack(1, 0, 1, 1, []));  //0
+
+console.log(queensAttack(100, 100, 48, 81, [[54, 87], [64, 97], [42, 75], [32, 65], [42, 87], [32, 97], [54, 75], [64, 65], [48, 87],
+[48, 75], [54, 81], [42, 81], [45, 17], [14, 24], [35, 15], [95, 64], [63, 87], [25, 72], [71, 38], [96, 97], [16, 30], [60, 34], [31, 67],
+[26, 82], [20, 93], [81, 38], [51, 94], [75, 41], [79, 84], [79, 65], [76, 80], [52, 87], [81, 54], [89, 52], [20, 31], [10, 41], [32, 73], [83, 98],
+[87, 61], [82, 52], [80, 64], [82, 46], [49, 21], [73, 86], [37, 70], [43, 12], [94, 28], [10, 93], [52, 25], [50, 61], [52, 68], [52, 23],
+[60, 91], [79, 17], [93, 82], [12, 18], [75, 64], [69, 69], [94, 74], [61, 61], [46, 57], [67, 45], [96, 64], [83, 89], [58, 87], [76, 53],
+[79, 21], [94, 70], [16, 10], [50, 82], [92, 20], [40, 51], [49, 28], [51, 82], [35, 16], [15, 86], [78, 89], [41, 98], [70, 46], [79, 79],
+[24, 40], [91, 13], [59, 73], [35, 32], [40, 31], [14, 31], [71, 35], [96, 18], [27, 39], [28, 38], [41, 36], [31, 63], [52, 48], [81, 25],
+[49, 90], [32, 65], [25, 45], [63, 94], [89, 50], [43, 41]]));  //40(62)
+
