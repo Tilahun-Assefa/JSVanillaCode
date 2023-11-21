@@ -1341,8 +1341,58 @@ function organizingContainers(container) {
     return "Impossible";
 }
 
-console.log(organizingContainers([[1, 4], [2, 3]]));    //Impossible
-console.log(organizingContainers([[1, 1], [1, 1]]));    //Possible
-console.log(organizingContainers([[0, 2], [1, 1]]));    //Impossible
-console.log(organizingContainers([[1, 3, 1], [2, 1, 2], [3, 3, 3]]));    //Impossible
-console.log(organizingContainers([[0, 2, 1], [1, 1, 1], [2, 0, 0]]));    //Possible
+// console.log(organizingContainers([[1, 4], [2, 3]]));    //Impossible
+// console.log(organizingContainers([[1, 1], [1, 1]]));    //Possible
+// console.log(organizingContainers([[0, 2], [1, 1]]));    //Impossible
+// console.log(organizingContainers([[1, 3, 1], [2, 1, 2], [3, 3, 3]]));    //Impossible
+// console.log(organizingContainers([[0, 2, 1], [1, 1, 1], [2, 0, 0]]));    //Possible
+
+/*
+ * Complete the 'encryption' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+function encryption(s) {
+    // Write your code here
+    //remove the spaces from the string
+    const strNoSpace = s.trim().split(" ").join("");
+
+    //get the width and length of the intermediate double string array
+    const row = Math.floor(Math.sqrt(strNoSpace.length));
+    const column = Math.ceil(Math.sqrt(strNoSpace.length));
+
+    //fill the double array with letters
+    let k = 0;
+    let intermediateStrArr = [];
+    for (let i = 0; i < row; i++) {
+        let tempArr = []
+        for (let j = 0; j < column; j++) {
+            if (k < strNoSpace.length) {
+                tempArr[j] = strNoSpace[k];
+                k++;
+            } else {
+                tempArr[j] = " ";
+            }
+        }
+        intermediateStrArr.push(tempArr.join(""));
+    }
+    console.log(intermediateStrArr);
+
+    //select each corresponding column values and merge
+    let encriptedArr = [];
+    for (let i = 0; i < intermediateStrArr[0].length; i++) {
+        let tempStr = " ";
+        for (let j = 0; j < intermediateStrArr.length; j++) {
+            tempStr += intermediateStrArr[j][i];
+
+        }
+        encriptedArr.push(tempStr.trim());
+    }
+    return encriptedArr.join(" ");
+}
+
+console.log(encryption("if man was meant to stay on the ground god would have given us roots"));
+
+console.log(encryption("chillout"));
