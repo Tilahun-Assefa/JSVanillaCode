@@ -1409,49 +1409,37 @@ function encryption(s) {
 
 function biggerIsGreater(w) {
     // Write your code here
-    //declare pointer to traverse the array
+    //declare pointer to traverse the string
     let pnt = w.length - 2;
-    let flag = false;
     if (pnt < 0 || pnt > 100) {
         return "no answer";
     }
-    //convert the string to characters array to mutuate(change)
-    const strArr = w.split("");
-    let afterArr;
-    let beforeArr;
-    let firstArr;
-    let secondArr;
-    let temp;
-    while (!flag && pnt > -1) {
+
+    while (pnt > -1) {
         //locate the first character that is higher to change to the least higher
-        if (strArr[pnt + 1] > strArr[pnt]) {
+        if (w[pnt + 1] > w[pnt]) {
             //isolate parts that to be reorder
-            afterArr = strArr.slice(pnt);
+            let right = w.substring(pnt + 1).trim();
+            let left = w.substring(0, pnt + 1).trim();
             //swap with the nearest greater character
-            temp = afterArr[0];
-            let k = afterArr.length - 1;
-            while (afterArr[k] < temp) {
+            let temp = w[pnt];
+            let k = right.length - 1;
+            while (right[k] <= temp) {
                 k--;
             }
-            afterArr[0] = afterArr[k];
-            afterArr[k] = temp;
-            firstArr = afterArr.slice(0, 1);
-            secondArr = afterArr.slice(1).sort();
+            let rightArr = right.split("");
+            let leftArr = left.split("");
+            leftArr[leftArr.length - 1] = right[k];
+            rightArr[k] = temp;
+
             //sort the character after the pointer
-            afterArr = [...firstArr, ...secondArr];
-            beforeArr = strArr.slice(0, pnt);
-            flag = true;
+           return [...leftArr,...rightArr.sort()].join("");
         } else {
             //move the pointer back 
             pnt--;
         }
     }
-
-    if (flag) {
-        return [...beforeArr, ...afterArr].join("");
-    } else {
-        return "no answer";
-    }
+    return "no answer";
 }
 
 console.log(biggerIsGreater("abcd"));
@@ -1466,3 +1454,5 @@ console.log(biggerIsGreater("dcba"));
 console.log(biggerIsGreater("dcbb"));
 console.log(biggerIsGreater("abdc"));
 console.log(biggerIsGreater("fedcbabcd"));
+console.log(biggerIsGreater("zzyyxxxxxwwwwwvvvvutttttsssssrrrrqqqppponnnnmmmmllkkjjjjiiggffffffeedddddbbbbbba")==="no answer");
+
