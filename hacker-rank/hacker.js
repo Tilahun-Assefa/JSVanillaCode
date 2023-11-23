@@ -1360,8 +1360,11 @@ function encryption(s) {
     const strNoSpace = s.trim().split(" ").join("");
 
     //get the width and length of the intermediate double string array
-    const row = Math.floor(Math.sqrt(strNoSpace.length));
+    let row = Math.floor(Math.sqrt(strNoSpace.length));
     const column = Math.ceil(Math.sqrt(strNoSpace.length));
+    if (row * column < strNoSpace.length) {
+        row++;
+    }
 
     //fill the double array with letters
     let k = 0;
@@ -1393,6 +1396,73 @@ function encryption(s) {
     return encriptedArr.join(" ");
 }
 
-console.log(encryption("if man was meant to stay on the ground god would have given us roots"));
+// console.log(encryption("if man was meant to stay on the ground god would have given us roots"));
+// console.log(encryption("chillout"));
 
-console.log(encryption("chillout"));
+
+/*
+ * Complete the 'biggerIsGreater' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING w as parameter.
+ */
+
+function biggerIsGreater(w) {
+    // Write your code here
+    //declare pointer to traverse the array
+    let pnt = w.length - 2;
+    let flag = false;
+    if (pnt < 0 || pnt > 100) {
+        return "no answer";
+    }
+    //convert the string to characters array to mutuate(change)
+    const strArr = w.split("");
+    let afterArr;
+    let beforeArr;
+    let firstArr;
+    let secondArr;
+    let temp;
+    while (!flag && pnt > -1) {
+        //locate the first character that is higher to change to the least higher
+        if (strArr[pnt + 1] > strArr[pnt]) {
+            //isolate parts that to be reorder
+            afterArr = strArr.slice(pnt);
+            //swap with the nearest greater character
+            temp = afterArr[0];
+            let k = afterArr.length - 1;
+            while (afterArr[k] < temp) {
+                k--;
+            }
+            afterArr[0] = afterArr[k];
+            afterArr[k] = temp;
+            firstArr = afterArr.slice(0, 1);
+            secondArr = afterArr.slice(1).sort();
+            //sort the character after the pointer
+            afterArr = [...firstArr, ...secondArr];
+            beforeArr = strArr.slice(0, pnt);
+            flag = true;
+        } else {
+            //move the pointer back 
+            pnt--;
+        }
+    }
+
+    if (flag) {
+        return [...beforeArr, ...afterArr].join("");
+    } else {
+        return "no answer";
+    }
+}
+
+console.log(biggerIsGreater("abcd"));
+console.log(biggerIsGreater("imllmmcslslkyoegymoa")); //imllmmcslslkyoegyoam
+console.log(biggerIsGreater("ab"));
+console.log(biggerIsGreater("bb"));
+console.log(biggerIsGreater("hefg"));
+console.log(biggerIsGreater("dhck"));
+console.log(biggerIsGreater("dkhc"));
+console.log(biggerIsGreater("lmno"));
+console.log(biggerIsGreater("dcba"));
+console.log(biggerIsGreater("dcbb"));
+console.log(biggerIsGreater("abdc"));
+console.log(biggerIsGreater("fedcbabcd"));
