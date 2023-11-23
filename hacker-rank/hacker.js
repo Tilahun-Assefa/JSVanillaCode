@@ -1433,7 +1433,7 @@ function biggerIsGreater(w) {
             rightArr[k] = temp;
 
             //sort the character after the pointer
-           return [...leftArr,...rightArr.sort()].join("");
+            return [...leftArr, ...rightArr.sort()].join("");
         } else {
             //move the pointer back 
             pnt--;
@@ -1442,17 +1442,53 @@ function biggerIsGreater(w) {
     return "no answer";
 }
 
-console.log(biggerIsGreater("abcd"));
-console.log(biggerIsGreater("imllmmcslslkyoegymoa")); //imllmmcslslkyoegyoam
-console.log(biggerIsGreater("ab"));
-console.log(biggerIsGreater("bb"));
-console.log(biggerIsGreater("hefg"));
-console.log(biggerIsGreater("dhck"));
-console.log(biggerIsGreater("dkhc"));
-console.log(biggerIsGreater("lmno"));
-console.log(biggerIsGreater("dcba"));
-console.log(biggerIsGreater("dcbb"));
-console.log(biggerIsGreater("abdc"));
-console.log(biggerIsGreater("fedcbabcd"));
-console.log(biggerIsGreater("zzyyxxxxxwwwwwvvvvutttttsssssrrrrqqqppponnnnmmmmllkkjjjjiiggffffffeedddddbbbbbba")==="no answer");
+// console.log(biggerIsGreater("abcd"));
+// console.log(biggerIsGreater("imllmmcslslkyoegymoa")); //imllmmcslslkyoegyoam
+// console.log(biggerIsGreater("ab"));
+// console.log(biggerIsGreater("bb"));
+// console.log(biggerIsGreater("hefg"));
+// console.log(biggerIsGreater("dhck"));
+// console.log(biggerIsGreater("dkhc"));
+// console.log(biggerIsGreater("lmno"));
+// console.log(biggerIsGreater("dcba"));
+// console.log(biggerIsGreater("dcbb"));
+// console.log(biggerIsGreater("abdc"));
+// console.log(biggerIsGreater("fedcbabcd"));
+// console.log(biggerIsGreater("zzyyxxxxxwwwwwvvvvutttttsssssrrrrqqqppponnnnmmmmllkkjjjjiiggffffffeedddddbbbbbba")==="no answer");
 
+/*
+ * Complete the 'kaprekarNumbers' function below.
+ *
+ * The function accepts following parameters:
+ *  1. INTEGER p
+ *  2. INTEGER q
+ */
+
+function kaprekarNumbers(p, q) {
+    // Write your code here
+    let numOfDigit = 0;
+    let kaprekarArr = [];
+    for (let i = p; i < q; i++) {
+        let left;
+        let right;
+        let numDigit = i.toString().length;
+        let sqr = i * i;
+        let sqrStr = sqr.toString()
+        let sqrDigit = sqrStr.length;
+        if (sqrDigit == 2 * numDigit || sqrDigit == 2 * numDigit-1) {
+            right = sqrStr.substring(sqrDigit - numDigit);
+            left = sqrStr.substring(0, sqrDigit - numDigit);
+            if (parseInt(left) + parseInt(right) === i) {
+                kaprekarArr.push(i);
+            }
+        }
+    }
+    if (kaprekarArr.length > 0) {
+        console.log(kaprekarArr.join(" "));
+    } else {
+        console.log("INVALID RANGE");
+
+    }
+}
+
+console.log(kaprekarNumbers(1, 100)) //"1 9 45 55 99";
