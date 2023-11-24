@@ -1414,18 +1414,8 @@ function biggerIsGreater(w) {
     if (pnt < 0 || pnt > 100) {
         return "no answer";
     }
-<<<<<<< Updated upstream
 
     while (pnt > -1) {
-=======
-    //convert the string to characters array to mutuate(change)
-    let afterArr;
-    let beforeArr;
-    let firstArr;
-    let secondArr;
-    let temp;
-    while (!flag && pnt > -1) {
->>>>>>> Stashed changes
         //locate the first character that is higher to change to the least higher
         if (w[pnt + 1] > w[pnt]) {
             //isolate parts that to be reorder
@@ -1452,21 +1442,20 @@ function biggerIsGreater(w) {
     return "no answer";
 }
 
-<<<<<<< Updated upstream
-// console.log(biggerIsGreater("abcd"));
-// console.log(biggerIsGreater("imllmmcslslkyoegymoa")); //imllmmcslslkyoegyoam
-// console.log(biggerIsGreater("ab"));
-// console.log(biggerIsGreater("bb"));
-// console.log(biggerIsGreater("hefg"));
-// console.log(biggerIsGreater("dhck"));
-// console.log(biggerIsGreater("dkhc"));
-// console.log(biggerIsGreater("lmno"));
-// console.log(biggerIsGreater("dcba"));
-// console.log(biggerIsGreater("dcbb"));
-// console.log(biggerIsGreater("abdc"));
-// console.log(biggerIsGreater("fedcbabcd"));
-// console.log(biggerIsGreater("zzyyxxxxxwwwwwvvvvutttttsssssrrrrqqqppponnnnmmmmllkkjjjjiiggffffffeedddddbbbbbba")==="no answer");
-
+// console.log(biggerIsGreater("abcd") === "abdc");
+// console.log(biggerIsGreater("imllmmcslslkyoegymoa") === "imllmmcslslkyoegyoam"); //
+// console.log(biggerIsGreater("ab") === "ba");
+// console.log(biggerIsGreater("bb") === "no answer");
+// console.log(biggerIsGreater("hefg") === "hegf");
+// console.log(biggerIsGreater("dhck") === "dhkc");
+// console.log(biggerIsGreater("dkhc") === "hcdk");
+// console.log(biggerIsGreater("lmno") === "lmon");
+// console.log(biggerIsGreater("dcba") === "no answer");
+// console.log(biggerIsGreater("dcbb") === "no answer");
+// console.log(biggerIsGreater("abdc") === "acbd");
+// console.log(biggerIsGreater("fedcbabcd") === "fedcbabdc");
+// console.log(biggerIsGreater("ocsmerkgidvddsazqxjbqlrrxcotrnfvtnlutlfcafdlwiismslaytqdbvlmcpapfbmzxmftrkkqvkpflxpezzapllerxyzlcf") === "ocsmerkgidvddsazqxjbqlrrxcotrnfvtnlutlfcafdlwiismslaytqdbvlmcpapfbmzxmftrkkqvkpflxpezzapllerxyzlfc");
+// console.log(biggerIsGreater("zyyxwwtrrnmlggfeb") === "no answer");
 /*
  * Complete the 'kaprekarNumbers' function below.
  *
@@ -1495,10 +1484,6 @@ function kaprekarNumbers(p, q) {
     }
     if (kaprekarArr.length > 0) {
         console.log(kaprekarArr.join(" "));
-=======
-    if (flag) {
-        return [...beforeArr, ...afterArr].join("").trim();
->>>>>>> Stashed changes
     } else {
         console.log("INVALID RANGE");
     }
@@ -1520,11 +1505,11 @@ function kaprekarNumbers(p, q) {
 function beautifulTriplets(d, arr) {
     // Write your code here
     let numTriplet = 0;
-    let cnt = 0;
-    let i =0;
-    let j=1;
+    let cnt = 1;
+    let i = 0;
+    let j = 1;
     let k = 0;
-    while (k <= arr.length) {       
+    while (k <= arr.length) {
         if (cnt === 3) {
             numTriplet++;
             cnt = 0;
@@ -1534,36 +1519,15 @@ function beautifulTriplets(d, arr) {
             i = j;
         }
         j++;
-        if (j >= arr.length) {
+        if (j >= arr.length || arr[j] - arr[i] > d) {
             k++;
             i = k;
-            j= k+1;
+            j = k + 1;
         }
     }
     return numTriplet;
 }
 
-<<<<<<< Updated upstream
 console.log(beautifulTriplets(1, [2, 2, 3, 4, 5])); //3
 console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));  //3
-console.log(beautifulTriplets(3, [1 ,6, 7 ,7 ,8, 10, 12, 13, 14, 19])); //2
-=======
-console.log(biggerIsGreater("abcd") === "abdc");
-console.log(biggerIsGreater("imllmmcslslkyoegymoa") === "imllmmcslslkyoegyoam"); //
-console.log(biggerIsGreater("ab") === "ba");
-console.log(biggerIsGreater("bb") === "no answer");
-console.log(biggerIsGreater("hefg") === "hegf");
-console.log(biggerIsGreater("dhck") === "dhkc");
-console.log(biggerIsGreater("dkhc") === "hcdk");
-console.log(biggerIsGreater("lmno") === "lmon");
-console.log(biggerIsGreater("dcba") === "no answer");
-console.log(biggerIsGreater("dcbb") === "no answer");
-console.log(biggerIsGreater("abdc") === "acbd");
-console.log(biggerIsGreater("fedcbabcd") === "fedcbabdc");
-
-
-console.log(biggerIsGreater("ocsmerkgidvddsazqxjbqlrrxcotrnfvtnlutlfcafdlwiismslaytqdbvlmcpapfbmzxmftrkkqvkpflxpezzapllerxyzlcf") === "ocsmerkgidvddsazqxjbqlrrxcotrnfvtnlutlfcafdlwiismslaytqdbvlmcpapfbmzxmftrkkqvkpflxpezzapllerxyzlfc");
-console.log(biggerIsGreater("zyyxwwtrrnmlggfeb") === "no answer");
-
-
->>>>>>> Stashed changes
+console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19])); //2
