@@ -1539,14 +1539,39 @@ function beautifulTriplets(d, arr) {
 
 function minimumDistances(a) {
     // Write your code here
-    let minDistance = 0;
-
-    if (minDistance === 0) {
-        console.log("-1");
+    let minDistance = a.length;
+    for (let i = 0; i <= a.length - 2; i++) {
+        for (let j = i + 1; j < a.length; j++) {
+            if (a[j] === a[i]) {
+                if (j - i < minDistance) {
+                    minDistance = j - i;
+                }
+                break;
+            }
+        }
+    }
+    if (minDistance === a.length) {
+        return "-1";
     } else {
-        console.log(minDistance);
+        return minDistance;
     }
 }
 
-console.log(minimumDistances([3, 2, 1, 2, 3]) === 2);
-console.log(minimumDistances([7, 1, 3, 4, 1, 7]) === 3);
+console.log(minimumDistances([3, 2, 1, 2, 3]) === 2); //2
+console.log(minimumDistances([7, 1, 3, 4, 1, 7]) === 3); //3
+
+/*
+ * Complete the 'howManyGames' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER p
+ *  2. INTEGER d
+ *  3. INTEGER m
+ *  4. INTEGER s
+ */
+
+function howManyGames(p, d, m, s) {
+    // Return the number of games you can buy
+
+}
