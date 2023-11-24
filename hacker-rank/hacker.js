@@ -1414,8 +1414,18 @@ function biggerIsGreater(w) {
     if (pnt < 0 || pnt > 100) {
         return "no answer";
     }
+<<<<<<< Updated upstream
 
     while (pnt > -1) {
+=======
+    //convert the string to characters array to mutuate(change)
+    let afterArr;
+    let beforeArr;
+    let firstArr;
+    let secondArr;
+    let temp;
+    while (!flag && pnt > -1) {
+>>>>>>> Stashed changes
         //locate the first character that is higher to change to the least higher
         if (w[pnt + 1] > w[pnt]) {
             //isolate parts that to be reorder
@@ -1442,6 +1452,7 @@ function biggerIsGreater(w) {
     return "no answer";
 }
 
+<<<<<<< Updated upstream
 // console.log(biggerIsGreater("abcd"));
 // console.log(biggerIsGreater("imllmmcslslkyoegymoa")); //imllmmcslslkyoegyoam
 // console.log(biggerIsGreater("ab"));
@@ -1484,6 +1495,10 @@ function kaprekarNumbers(p, q) {
     }
     if (kaprekarArr.length > 0) {
         console.log(kaprekarArr.join(" "));
+=======
+    if (flag) {
+        return [...beforeArr, ...afterArr].join("").trim();
+>>>>>>> Stashed changes
     } else {
         console.log("INVALID RANGE");
     }
@@ -1528,6 +1543,27 @@ function beautifulTriplets(d, arr) {
     return numTriplet;
 }
 
+<<<<<<< Updated upstream
 console.log(beautifulTriplets(1, [2, 2, 3, 4, 5])); //3
 console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));  //3
 console.log(beautifulTriplets(3, [1 ,6, 7 ,7 ,8, 10, 12, 13, 14, 19])); //2
+=======
+console.log(biggerIsGreater("abcd") === "abdc");
+console.log(biggerIsGreater("imllmmcslslkyoegymoa") === "imllmmcslslkyoegyoam"); //
+console.log(biggerIsGreater("ab") === "ba");
+console.log(biggerIsGreater("bb") === "no answer");
+console.log(biggerIsGreater("hefg") === "hegf");
+console.log(biggerIsGreater("dhck") === "dhkc");
+console.log(biggerIsGreater("dkhc") === "hcdk");
+console.log(biggerIsGreater("lmno") === "lmon");
+console.log(biggerIsGreater("dcba") === "no answer");
+console.log(biggerIsGreater("dcbb") === "no answer");
+console.log(biggerIsGreater("abdc") === "acbd");
+console.log(biggerIsGreater("fedcbabcd") === "fedcbabdc");
+
+
+console.log(biggerIsGreater("ocsmerkgidvddsazqxjbqlrrxcotrnfvtnlutlfcafdlwiismslaytqdbvlmcpapfbmzxmftrkkqvkpflxpezzapllerxyzlcf") === "ocsmerkgidvddsazqxjbqlrrxcotrnfvtnlutlfcafdlwiismslaytqdbvlmcpapfbmzxmftrkkqvkpflxpezzapllerxyzlfc");
+console.log(biggerIsGreater("zyyxwwtrrnmlggfeb") === "no answer");
+
+
+>>>>>>> Stashed changes
