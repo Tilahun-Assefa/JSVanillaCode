@@ -1466,18 +1466,17 @@ function biggerIsGreater(w) {
 
 function kaprekarNumbers(p, q) {
     // Write your code here
-    let numOfDigit = 0;
     let kaprekarArr = [];
-    for (let i = p; i < q; i++) {
-        let left;
-        let right;
+    let left;
+    let right;
+    for (let i = p; i <= q; i++) {
         let numDigit = i.toString().length;
         let sqr = i * i;
         let sqrStr = sqr.toString()
         let sqrDigit = sqrStr.length;
-        if (sqrDigit == 2 * numDigit || sqrDigit == 2 * numDigit-1) {
+        if (sqrDigit === 2 * numDigit || sqrDigit === 2 * numDigit - 1) {
             right = sqrStr.substring(sqrDigit - numDigit);
-            left = sqrStr.substring(0, sqrDigit - numDigit);
+            left = (sqrDigit - numDigit) > 0 ? sqrStr.substring(0, sqrDigit - numDigit) : 0;
             if (parseInt(left) + parseInt(right) === i) {
                 kaprekarArr.push(i);
             }
@@ -1487,8 +1486,48 @@ function kaprekarNumbers(p, q) {
         console.log(kaprekarArr.join(" "));
     } else {
         console.log("INVALID RANGE");
-
     }
 }
 
-console.log(kaprekarNumbers(1, 100)) //"1 9 45 55 99";
+// console.log(kaprekarNumbers(1, 100)); //"1 9 45 55 99";
+
+// console.log(kaprekarNumbers(1, 99999)); // 1 9 45 55 99 297 703 999 2223 2728 4950 5050 7272 7777 9999 17344 22222 77778 82656 95121 99999
+
+/*
+ * Complete the 'beautifulTriplets' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER d
+ *  2. INTEGER_ARRAY arr
+ */
+
+function beautifulTriplets(d, arr) {
+    // Write your code here
+    let numTriplet = 0;
+    let cnt = 0;
+    let i =0;
+    let j=1;
+    let k = 0;
+    while (k <= arr.length) {       
+        if (cnt === 3) {
+            numTriplet++;
+            cnt = 0;
+        }
+        if (arr[j] - arr[i] === d) {
+            cnt++;
+            i = j;
+        }
+        j++;
+        if (j >= arr.length) {
+            k++;
+            i = k;
+            j= k+1;
+        }
+    }
+    return numTriplet;
+}
+
+console.log(beautifulTriplets(1, [2, 2, 3, 4, 5])); //3
+console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));  //3
+console.log(beautifulTriplets(3, [1 ,6, 7 ,7 ,8, 10, 12, 13, 14, 19])); //2
