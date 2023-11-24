@@ -1525,8 +1525,28 @@ function beautifulTriplets(d, arr) {
     return numTriplets;
 }
 
-console.log(beautifulTriplets(1, [2, 2, 3, 4, 5]) === 3); //3
-console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]) === 3);  //3
-console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19]) === 2); //2
+// console.log(beautifulTriplets(1, [2, 2, 3, 4, 5]) === 3); //3
+// console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]) === 3);  //3
+// console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19]) === 2); //2
+// console.log(beautifulTriplets(5, [0, 1, 2, 4, 5, 11, 14, 15, 16, 17, 18, 19, 21, 23, 26, 27, 29, 31, 33, 34, 36, 37, 38, 39, 41, 43, 44, 45, 46, 47, 48, 50, 51, 53, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 71, 73, 74, 78, 79, 80, 81, 82, 83, 84, 85, 86, 90, 92, 93, 96, 97, 98, 99, 100])); //30
 
-console.log(beautifulTriplets(5, [0, 1, 2, 4, 5, 11, 14, 15, 16, 17, 18, 19, 21, 23, 26, 27, 29, 31, 33, 34, 36, 37, 38, 39, 41, 43, 44, 45, 46, 47, 48, 50, 51, 53, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 71, 73, 74, 78, 79, 80, 81, 82, 83, 84, 85, 86, 90, 92, 93, 96, 97, 98, 99, 100])); //2
+/*
+ * Complete the 'minimumDistances' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY a as parameter.
+ */
+
+function minimumDistances(a) {
+    // Write your code here
+    let minDistance = 0;
+
+    if (minDistance === 0) {
+        console.log("-1");
+    } else {
+        console.log(minDistance);
+    }
+}
+
+console.log(minimumDistances([3, 2, 1, 2, 3]) === 2);
+console.log(minimumDistances([7, 1, 3, 4, 1, 7]) === 3);
