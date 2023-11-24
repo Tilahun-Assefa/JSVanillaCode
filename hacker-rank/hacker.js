@@ -1505,29 +1505,30 @@ function kaprekarNumbers(p, q) {
 function beautifulTriplets(d, arr) {
     // Write your code here
     let numTriplet = 0;
-    let cnt = 0;
-    let i =0;
-    let j=1;
+    let cnt = 1;
+    let i = 0;
+    let j = 1;
     let k = 0;
-    while (k <= arr.length) {       
-        if (cnt === 3) {
-            numTriplet++;
-            cnt = 0;
-        }
+    while (k <= arr.length) {
         if (arr[j] - arr[i] === d) {
             cnt++;
             i = j;
         }
+        if (cnt === 3) {
+            numTriplet++;
+            cnt = 1;
+        }
         j++;
-        if (j >= arr.length) {
+        if (j >= arr.length || arr[j] - arr[i] > d) {
             k++;
             i = k;
-            j= k+1;
+            j = k + 1;
+            cnt = 1;
         }
     }
     return numTriplet;
 }
 
-console.log(beautifulTriplets(1, [2, 2, 3, 4, 5])); //3
-console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));  //3
-console.log(beautifulTriplets(3, [1 ,6, 7 ,7 ,8, 10, 12, 13, 14, 19])); //2
+console.log(beautifulTriplets(1, [2, 2, 3, 4, 5]) === 3); //3
+console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]) === 3);  //3
+console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19]) === 2); //2
