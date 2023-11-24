@@ -1504,31 +1504,29 @@ function kaprekarNumbers(p, q) {
 
 function beautifulTriplets(d, arr) {
     // Write your code here
-    let numTriplet = 0;
-    let cnt = 1;
-    let i = 0;
-    let j = 1;
-    let k = 0;
-    while (k <= arr.length) {
-        if (arr[j] - arr[i] === d) {
-            cnt++;
-            i = j;
-        }
-        if (cnt === 3) {
-            numTriplet++;
-            cnt = 1;
-        }
-        j++;
-        if (j >= arr.length || arr[j] - arr[i] > d) {
-            k++;
-            i = k;
-            j = k + 1;
-            cnt = 1;
+    let numTriplets = 0;
+    for (let i = 0; i < arr.length - 2; i++) {
+        let cnt = 1;
+        let k = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if ((arr[j] - arr[k]) > d) {
+                break;
+            }
+            if ((arr[j] - arr[k]) % d === 0 && arr[j] > arr[k]) {
+                cnt++;
+                k = j;
+            }
+            if (cnt === 3) {
+                numTriplets++;
+                break;
+            }
         }
     }
-    return numTriplet;
+    return numTriplets;
 }
 
 console.log(beautifulTriplets(1, [2, 2, 3, 4, 5]) === 3); //3
 console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]) === 3);  //3
 console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19]) === 2); //2
+
+console.log(beautifulTriplets(5, [0, 1, 2, 4, 5, 11, 14, 15, 16, 17, 18, 19, 21, 23, 26, 27, 29, 31, 33, 34, 36, 37, 38, 39, 41, 43, 44, 45, 46, 47, 48, 50, 51, 53, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 71, 73, 74, 78, 79, 80, 81, 82, 83, 84, 85, 86, 90, 92, 93, 96, 97, 98, 99, 100])); //2
