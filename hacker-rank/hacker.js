@@ -1504,30 +1504,74 @@ function kaprekarNumbers(p, q) {
 
 function beautifulTriplets(d, arr) {
     // Write your code here
-    let numTriplet = 0;
-    let cnt = 1;
-    let i = 0;
-    let j = 1;
-    let k = 0;
-    while (k <= arr.length) {
-        if (cnt === 3) {
-            numTriplet++;
-            cnt = 0;
-        }
-        if (arr[j] - arr[i] === d) {
-            cnt++;
-            i = j;
-        }
-        j++;
-        if (j >= arr.length || arr[j] - arr[i] > d) {
-            k++;
-            i = k;
-            j = k + 1;
+    let numTriplets = 0;
+    for (let i = 0; i < arr.length - 2; i++) {
+        let cnt = 1;
+        let k = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if ((arr[j] - arr[k]) > d) {
+                break;
+            }
+            if ((arr[j] - arr[k]) % d === 0 && arr[j] > arr[k]) {
+                cnt++;
+                k = j;
+            }
+            if (cnt === 3) {
+                numTriplets++;
+                break;
+            }
         }
     }
-    return numTriplet;
+    return numTriplets;
 }
 
-console.log(beautifulTriplets(1, [2, 2, 3, 4, 5])); //3
-console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));  //3
-console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19])); //2
+// console.log(beautifulTriplets(1, [2, 2, 3, 4, 5]) === 3); //3
+// console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]) === 3);  //3
+// console.log(beautifulTriplets(3, [1, 6, 7, 7, 8, 10, 12, 13, 14, 19]) === 2); //2
+// console.log(beautifulTriplets(5, [0, 1, 2, 4, 5, 11, 14, 15, 16, 17, 18, 19, 21, 23, 26, 27, 29, 31, 33, 34, 36, 37, 38, 39, 41, 43, 44, 45, 46, 47, 48, 50, 51, 53, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 71, 73, 74, 78, 79, 80, 81, 82, 83, 84, 85, 86, 90, 92, 93, 96, 97, 98, 99, 100])); //30
+
+/*
+ * Complete the 'minimumDistances' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY a as parameter.
+ */
+
+function minimumDistances(a) {
+    // Write your code here
+    let minDistance = a.length;
+    for (let i = 0; i <= a.length - 2; i++) {
+        for (let j = i + 1; j < a.length; j++) {
+            if (a[j] === a[i]) {
+                if (j - i < minDistance) {
+                    minDistance = j - i;
+                }
+                break;
+            }
+        }
+    }
+    if (minDistance === a.length) {
+        return "-1";
+    } else {
+        return minDistance;
+    }
+}
+
+// console.log(minimumDistances([3, 2, 1, 2, 3]) === 2); //2
+// console.log(minimumDistances([7, 1, 3, 4, 1, 7]) === 3); //3
+
+/*
+ * Complete the 'howManyGames' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER p
+ *  2. INTEGER d
+ *  3. INTEGER m
+ *  4. INTEGER s
+ */
+
+function howManyGames(p, d, m, s) {
+    // Return the number of games you can buy
+
+}
