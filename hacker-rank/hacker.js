@@ -1573,5 +1573,127 @@ function minimumDistances(a) {
 
 function howManyGames(p, d, m, s) {
     // Return the number of games you can buy
-
+    let numGames = 0;
+    let sum = 0;
+    while (sum + p <= s) {
+        sum += p;
+        numGames++;
+        if (p >= m + d) {
+            p -= d;
+        } else {
+            p = m;
+        }
+    }
+    return numGames;
 }
+// console.log(howManyGames(20, 3, 6, 70) === 5);
+// console.log(howManyGames(20, 3, 6, 80) === 6);
+// console.log(howManyGames(20, 3, 6, 85) === 7);
+
+/*
+ * Complete the 'timeInWords' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. INTEGER h
+ *  2. INTEGER m
+ */
+
+function timeInWords(h, m) {
+    // Write your code here
+    let str = "";
+    const cmnStrArr = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+    const hourStrArr = [...cmnStrArr, "one"]
+    const minuteArr = [...cmnStrArr, "thirteen", "fourteen", "quarter", "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+        "twenty one", "twenty two", "twenty three", "twenty four", "twenty five", "twenty six", "twenty seven", "twenty eight", "twenty nine", "half"];
+    let strHour = m <= 30 ? hourStrArr[h - 1] : hourStrArr[h];
+    let strMinutes = m < 30 ? minuteArr[m - 1] : minuteArr[60 - m - 1];
+    if (0 <= m && m <= 30) {
+        if (m === 0) {
+            str = strHour + " o' clock";
+        } else if (m === 1) {
+            str = strMinutes + " minute past " + strHour;
+        } else if (m === 15 || m === 30) {
+            str = strMinutes + " past " + strHour;
+        } else {
+            str = strMinutes + " minutes past " + strHour;
+        }
+    } else {
+        if (m === 45) {
+            str = strMinutes + " to " + strHour;
+        } else if (m === 59) {
+            str = strMinutes + " minute to " + strHour;
+        } else {
+            str = strMinutes + " minutes to " + strHour;
+        }
+    }
+    return str;
+}
+// console.log(timeInWords(5, 0) === "five o' clock");
+// console.log(timeInWords(5, 1) === "one minute past five");
+// console.log(timeInWords(5, 10) === "ten minutes past five");
+// console.log(timeInWords(5, 15) === "quarter past five");
+// console.log(timeInWords(5, 30) === "half past five");
+// console.log(timeInWords(5, 40) === "twenty minutes to six");
+// console.log(timeInWords(5, 45) === "quarter to six");
+// console.log(timeInWords(5, 47) === "thirteen minutes to six");
+// console.log(timeInWords(5, 28) === "twenty eight minutes past five");
+// console.log(timeInWords(3, 0) === "three o' clock");
+// console.log(timeInWords(7, 15) === "quarter past seven");
+// console.log(timeInWords(12, 45) === "quarter to one");
+// console.log(timeInWords(1, 1) === "one minute past one");
+// console.log(timeInWords(1, 59) === "one minute to two"); 
+
+/*
+ * Complete the 'chocolateFeast' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER c
+ *  3. INTEGER m
+ */
+
+function chocolateFeast(n, c, m) {
+    // Write your code here
+    //number of chocolate the money can buy
+    let numChocolate = parseInt(n / c);
+    //number of wrapper in hand
+    let numWrapper = numChocolate;
+    let turnInChocolate = 0;
+    let leftoverWrapper = 0;
+    while (numWrapper >= m) {
+        // number of wrapper turn in for a free chocolate
+        turnInChocolate = parseInt(numWrapper / m);
+        numChocolate += turnInChocolate;
+        leftoverWrapper = numWrapper % m;
+        numWrapper = turnInChocolate + leftoverWrapper;
+    }
+
+    return numChocolate;
+}
+
+// console.log(chocolateFeast(15, 3, 2) === 9);
+// console.log(chocolateFeast(10, 2, 5) === 6);
+// console.log(chocolateFeast(12, 4, 4) === 3);
+// console.log(chocolateFeast(6, 2, 2) === 5);
+// console.log(chocolateFeast(15, 3, 2) === 9);
+
+/*
+ * Complete the 'serviceLane' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. 2D_INTEGER_ARRAY cases
+ */
+
+function serviceLane(n, cases) {
+    // Write your code here
+    let arrMaxWidth = [];
+    
+    return arrMaxWidth
+}
+
+console.log(serviceLane([2, 3, 2, 1], [[1, 2], [2, 4]]));   //[2, 1];
+console.log(serviceLane([2, 3, 1, 2, 3, 2, 3, 3], [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]));   //[1, 2, 3, 2, 1];
