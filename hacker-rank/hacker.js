@@ -1745,5 +1745,41 @@ function workbook(n, k, arr) {
     }
     return numSpecialProblems;
 }
-console.log(workbook(2, 3, [4, 2]) === 1);
-console.log(workbook(5, 3, [4, 2, 6, 1, 10]) === 4);
+// console.log(workbook(2, 3, [4, 2]) === 1);
+// console.log(workbook(5, 3, [4, 2, 6, 1, 10]) === 4);
+
+// Complete the flatlandSpaceStations function below.
+function flatlandSpaceStations(n, c) {
+    let maxDistance = 0;
+    for (let i = 0; i < n; i++) {
+        //calculating distance from each city(i) to all spacestations(j) and determine the nearest
+        let nearestSpaceStationToCity = n;
+        for (let j = 0; j < c.length; j++) {
+            const dist = Math.abs(i - c[j]);
+            if (dist < nearestSpaceStationToCity) {
+                nearestSpaceStationToCity = dist;
+            }
+        }
+        //taking all nearest space station for all city and determine the farthest one
+        if (nearestSpaceStationToCity > maxDistance) {
+            maxDistance = nearestSpaceStationToCity;
+        }
+    }
+    return maxDistance;
+}
+
+// console.log(flatlandSpaceStations(3,[1])===1);
+// console.log(flatlandSpaceStations(3,[0,4])===2);
+// console.log(flatlandSpaceStations(3,[0,1,2,4,3,5])===0);
+
+/*
+ * Complete the 'fairRations' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts INTEGER_ARRAY B as parameter.
+ */
+
+function fairRations(B) {
+    // Write your code here
+
+}
