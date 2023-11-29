@@ -1705,5 +1705,45 @@ function serviceLane(n, cases) {
     return arrMinWidth;
 }
 
-console.log(serviceLane([2, 3, 2, 1], [[0, 1], [1, 3]]));   //[2, 1];
-console.log(serviceLane([2, 3, 1, 2, 3, 2, 3, 3], [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]));   //[1, 2, 3, 2, 1];
+// console.log(serviceLane([2, 3, 2, 1], [[0, 1], [1, 3]]));   //[2, 1];
+// console.log(serviceLane([2, 3, 1, 2, 3, 2, 3, 3], [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]));   //[1, 2, 3, 2, 1];
+
+/*
+ * Complete the 'workbook' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER k
+ *  3. INTEGER_ARRAY arr
+ */
+
+function workbook(n, k, arr) {
+    // Write your code here
+    let numSpecialProblems = 0;
+    let numPagesPerChapter = 0;
+    let pageNum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        console.log("Chapter", i + 1);
+        numPagesPerChapter = Math.ceil(arr[i] / k);
+        let numProblemsInChapter = arr[i];
+        let problemNum = 0;
+        for (let j = 0; j < numPagesPerChapter; j++) {
+            pageNum++;
+            let numProblemsInPage = numProblemsInChapter - k > 0 ? k : numProblemsInChapter;
+            for (let m = 0; m < numProblemsInPage; m++) {
+                problemNum++;
+                console.log("Page Number", j + 1, "Problem No", problemNum);
+                if (problemNum === pageNum) {
+                    numSpecialProblems++;
+                }
+            }
+            numProblemsInChapter -= k;
+            console.log("Book page number", pageNum);
+        }
+    }
+    return numSpecialProblems;
+}
+console.log(workbook(2, 3, [4, 2]) === 1);
+console.log(workbook(5, 3, [4, 2, 6, 1, 10]) === 4);
