@@ -1690,10 +1690,20 @@ function chocolateFeast(n, c, m) {
 
 function serviceLane(n, cases) {
     // Write your code here
-    let arrMaxWidth = [];
-    
-    return arrMaxWidth
+    let arrMinWidth = [];
+    for (let i = 0; i < cases.length; i++) {
+        let entry = cases[i][0];
+        let exit = cases[i][1];
+        let minWidth = n[entry];
+        for (let j = entry; j <= exit; j++) {
+            if (n[j] < minWidth) {
+                minWidth = n[j];
+            }
+        }
+        arrMinWidth.push(minWidth);
+    }
+    return arrMinWidth;
 }
 
-console.log(serviceLane([2, 3, 2, 1], [[1, 2], [2, 4]]));   //[2, 1];
+console.log(serviceLane([2, 3, 2, 1], [[0, 1], [1, 3]]));   //[2, 1];
 console.log(serviceLane([2, 3, 1, 2, 3, 2, 3, 3], [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]));   //[1, 2, 3, 2, 1];
