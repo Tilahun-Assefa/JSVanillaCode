@@ -1781,8 +1781,70 @@ function flatlandSpaceStations(n, c) {
 
 function fairRations(B) {
     // Write your code here
+    let minNumLoaves = 0;
+    for (let i = 0; i < B.length - 1; i++) {
+        if (B[i] % 2 !== 0) {
+            B[i] += 1;
+            B[i + 1] += 1;
+            minNumLoaves += 2;
+        }
+    }
+    if (B[B.length - 1] % 2 !== 0) {
+        return "NO";
+    }
+    return minNumLoaves.toString();
+}
+// console.log(fairRations([4, 5, 6, 7]) === "4");
+// console.log(fairRations([2, 3, 4, 5, 6]) === "4");
+// console.log(fairRations([1, 2]) === "NO");
+
+/*
+ * Complete the 'cavityMap' function below.
+ *
+ * The function is expected to return a STRING_ARRAY.
+ * The function accepts STRING_ARRAY grid as parameter.
+ */
+
+function cavityMap(grid) {
+    // Write your code here
+    let modifiedGrid = [];
+    let finalGrid = [];
+    for (let k = 0; k < grid.length; k++) {
+        const element = grid[k].split('');
+        modifiedGrid.push(element);
+    }
+    for (let i = 0; i < modifiedGrid.length; i++) {
+        for (let j = 0; j < modifiedGrid.length; j++) {
+            let el = +modifiedGrid[i][j];
+            if (i !== 0 && j !== 0 & i !== modifiedGrid.length - 1 && j !== modifiedGrid.length - 1) {
+                if (+modifiedGrid[i - 1][j] < el && +modifiedGrid[i][j - 1] < el
+                    && +modifiedGrid[i + 1][j] < el && +modifiedGrid[i][j + 1] < el) {
+                    modifiedGrid[i][j] = "X";
+                }
+            }
+        }
+    }
+    for (let k = 0; k < modifiedGrid.length; k++) {
+        const elem = modifiedGrid[k].join('');
+        finalGrid.push(elem);
+    }
+    return finalGrid;
+}
+
+// console.log(cavityMap(["989", "191", "111"]));  //["989", "1X1", "111"]
+// console.log(cavityMap(['1112', '1912', '1892', '1234']));   //["1112","1X12","18X2","1234"]
+
+/*
+ * Complete the 'stones' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER a
+ *  3. INTEGER b
+ */
+
+function stones(n, a, b) {
+    // Write your code here
 
 }
-console.log(fairRations([4,5,6,7])==="4");
-console.log(fairRations([2,3,4,5,6])==="4");
-console.log(fairRations([1,2])==="NO");
