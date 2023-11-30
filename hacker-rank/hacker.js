@@ -1783,3 +1783,6 @@ function fairRations(B) {
     // Write your code here
 
 }
+console.log(fairRations([4,5,6,7])==="4");
+console.log(fairRations([2,3,4,5,6])==="4");
+console.log(fairRations([1,2])==="NO");
