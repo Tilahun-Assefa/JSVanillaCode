@@ -1846,5 +1846,28 @@ function cavityMap(grid) {
 
 function stones(n, a, b) {
     // Write your code here
-
+    const result = [];
+    const minSum = (n - 1) * (a < b ? a : b);
+    const maxSum = (n - 1) * (a > b ? a : b);
+    const diff = Math.abs(b - a);
+    let total = minSum;
+    while (total <= maxSum) {
+        result.push(total);
+        if (diff <= 0) {
+            break;
+        } else {
+            total += diff;
+        }
+    }
+    return result;
 }
+
+console.log(stones(3, 1, 2));   //[2,3,4]
+console.log(stones(4, 10, 100));    //[30, 120, 210, 300]
+console.log(stones(4, 10, 10));    //[30]
+console.log(stones(58, 69, 24));    //[30]
+console.log(stones(83, 86, 81));    //[30]
+console.log(stones(73, 25, 25));    //[1800]
+console.log(stones(12, 73, 82));    //[803, 812, 821, 830, 839, 848, 857, 866, 875, 884, 893, 902]
+console.log(stones(5, 3, 23));    //[12, 32, 52, 72, 92]
+
