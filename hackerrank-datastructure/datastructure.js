@@ -115,19 +115,29 @@ function matchingStrings(stringList, queries) {
 
 function arrayManipulation(n, queries) {
     // Write your code here
-    let maxValue = 0;
+    let maxValue = Number.NEGATIVE_INFINITY;
     const arr = Array(n).fill(0);
+    let cur = 0;
     for (let i = 0; i < queries.length; i++) {
-        const elem = queries[i];
-        for (let k = elem[0] - 1; k < elem[1]; k++) {
-            arr[k] += elem[2];
-            if (arr[k] > maxValue) {
-                maxValue = arr[k];
-            }
+        const query = queries[i];
+        let a = query[0];
+        let b = query[1];
+        let k = query[2];
+        arr[a - 1] += k;
+        if (b < n) {
+            arr[b] -= k;
         }
+    }
+    for (let j = 0; j < arr.length; j++) {
+        cur += arr[j];
+        maxValue = Math.max(cur, maxValue);
     }
     return maxValue;
 }
 
-console.log(arrayManipulation(10, [[1, 5, 3], [4, 8, 7], [6, 9, 1]]));  //10
-console.log(arrayManipulation(5, [[1, 2, 100], [2, 5, 100], [3, 4, 100]])); //200
+// console.log(arrayManipulation(10, [[1, 5, 3], [4, 8, 7], [6, 9, 1]]));  //10
+// console.log(arrayManipulation(5, [[1, 2, 100], [2, 5, 100], [3, 4, 100]])); //200
+
+function hasCycle(head){
+
+}
