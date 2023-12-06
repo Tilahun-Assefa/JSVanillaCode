@@ -1862,12 +1862,56 @@ function stones(n, a, b) {
     return result;
 }
 
-console.log(stones(3, 1, 2));   //[2,3,4]
-console.log(stones(4, 10, 100));    //[30, 120, 210, 300]
-console.log(stones(4, 10, 10));    //[30]
-console.log(stones(58, 69, 24));    //[30]
-console.log(stones(83, 86, 81));    //[30]
-console.log(stones(73, 25, 25));    //[1800]
-console.log(stones(12, 73, 82));    //[803, 812, 821, 830, 839, 848, 857, 866, 875, 884, 893, 902]
-console.log(stones(5, 3, 23));    //[12, 32, 52, 72, 92]
+// console.log(stones(3, 1, 2));   //[2,3,4]
+// console.log(stones(4, 10, 100));    //[30, 120, 210, 300]
+// console.log(stones(4, 10, 10));    //[30]
+// console.log(stones(58, 69, 24));    //[30]
+// console.log(stones(83, 86, 81));    //[30]
+// console.log(stones(73, 25, 25));    //[1800]
+// console.log(stones(12, 73, 82));    //[803, 812, 821, 830, 839, 848, 857, 866, 875, 884, 893, 902]
+// console.log(stones(5, 3, 23));    //[12, 32, 52, 72, 92]
+
+
+
+/*
+ * Complete the 'gridSearch' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. STRING_ARRAY G
+ *  2. STRING_ARRAY P
+ */
+
+function gridSearch(G, P) {
+    // Write your code here
+    for (let i = 0; i < G.length; i++) {
+        const elem = G[i];
+        const temp= P[i];
+        for (let j = 0; j < elem.length-p; j++) {
+            const element = array[j];
+            
+        }
+        
+    }
+
+}
+console.log(gridSearch([['1234567890'], ['0987654321'], ['1111111111'], ['1111111111'], ['2222222222']],
+    [['876543'], ['111111'], ['111111']]));  //YES
+
+console.log(gridSearch([['7283455864'], ['6731158619'], ['8988242643'], ['3830589324'], ['2229505813'],
+['5633845374'], ['6473530293'], ['7053106601'], ['0834282956'], ['4607924137']], [['9505'], ['3845'], ['3530']]));  //YES
+
+console.log(gridSearch([['400453592126560'], ['114213133098692'], ['474386082879648'], ['522356951189169'], ['887109450487496'],
+['252802633388782'], ['502771484966748'], ['075975207693780'], ['511799789562806'], ['404007454272504'], ['549043809916080'],
+['962410809534811'], ['445893523733475'], ['768705303214174'], ['650629270887160']], [['99'], ['99']]));  //No
+
+
+
+
+
+
+
+
+
+
 
