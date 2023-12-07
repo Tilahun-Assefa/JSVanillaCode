@@ -1863,39 +1863,26 @@ function gridSearch(G, P) {
     if (P.length > G.length) {
         return "NO";
     }
-    let rowGrid = 0;
-    let col = 0;
-    let rowPattern = 0;
-    let gridElem;
-    let patternElem;
-    while (rowGrid <= G.length - P.length) {
-        gridElem = G[rowGrid];
-        patternElem = P[rowPattern];
-        col = 0;
-        while (col <= gridElem.length - patternElem.length) {
-            if (gridElem.substring(col, patternElem.length + col) === patternElem) {
-                console.log("row: ", rowGrid, " ", "column: ", col);
-                break;
+    let i = 0;
+    let j = 0;
+    while (i <= G.length - P.length) {
+        while (j <= G[0].length - P[0].length) {
+            let matches = 0;
+            for (let k = 0; k <= P.length; k++) {
+                let str = G[k + i].substring(j, P[k].length + j);
+                if (str !== P[k]) {
+                    break;
+                }
+                matches++;
+                if (matches === P.length) {
+                    return "YES";
+                }
             }
-            col++;
+            j++;
         }
-        rowGrid++;
+        j = 0;
+        i++;
     }
-    // P.forEach(el => {
-
-    //     for (let i = 0; i < G.length; i++) {
-    //         const gridElem = G[i];
-    //         for (let j = 0; j <= gridElem.length - el.length; j++) {
-    //             // console.log(gridElem.substring(j, el.length + j));
-    //             if (gridElem.substring(j, el.length + j) === el) {
-    //                 console.log("row: ", i, " ", "column: ", j);
-    //                 i = i;
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // });
-
     return "NO";
 }
 console.log(gridSearch(['1234567890', '0987654321', '1111111111', '1111111111', '2222222222'],
