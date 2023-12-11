@@ -1932,7 +1932,17 @@ console.log(gridSearch(['400453592126560', '114213133098692', '474386082879648',
     '252802633388782', '502771484966748', '075975207693780', '511799789562806', '404007454272504', '549043809916080',
     '962410809534811', '445893523733475', '768705303214174', '650629270887160'], ['99', '99']));  //No
 
+/*
+ * Complete the 'happyLadybugs' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING b as parameter.
+ */
 
+function happyLadybugs(b) {
+    // Write your code here
+
+}
 
 
 
