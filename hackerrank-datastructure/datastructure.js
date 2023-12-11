@@ -138,6 +138,22 @@ function arrayManipulation(n, queries) {
 // console.log(arrayManipulation(10, [[1, 5, 3], [4, 8, 7], [6, 9, 1]]));  //10
 // console.log(arrayManipulation(5, [[1, 2, 100], [2, 5, 100], [3, 4, 100]])); //200
 
-function hasCycle(head){
+// Complete the printLinkedList function below.
 
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+function printLinkedList(head) {
+    const start = head;
+    while (start) {
+        console.log(start.data);
+        start = start.next;
+    }
 }
