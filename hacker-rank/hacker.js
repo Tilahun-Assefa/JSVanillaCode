@@ -1928,8 +1928,41 @@ console.log(gridSearch(['400453592126560', '114213133098692', '474386082879648',
 
 function happyLadybugs(b) {
     // Write your code here
+    let flaghappy = true;
+    //check for underscore
+    let flagUnderscore = false;
+    for (let i = 0; i < b.length; i++) {
+        if(b[i]==="_"){
+            flagUnderscore = true;
+        };        
+    }
 
+    //check if all color has at leaset one same neighbour
+    let flagNeighbor = true;
+    for (let i = 1; i < b.length-1; i++) {
+        if(b[i]!==b[i-1] && b[i]!==b[i+1]){
+            flagNeighbor = false;
+        }        
+    }
+    if(flaghappy){
+        return "YES"
+    }
+    return "NO";
 }
+
+console.log(happyLadybugs("YYR_B_BR")); //YES
+console.log(happyLadybugs("RBY_YBR"));  //YES
+console.log(happyLadybugs("X_Y_X"));    //NO
+console.log(happyLadybugs("B_RRBR"));   //YES
+console.log(happyLadybugs("AABBC"));    //NO
+console.log(happyLadybugs("AABBC_C"));  //NO
+console.log(happyLadybugs("DD__FQ_QQF"));   //YES
+console.log(happyLadybugs("_"));        //YES
+console.log(happyLadybugs("AABCBC"));   //NO
+
+
+
+
 
 
 
