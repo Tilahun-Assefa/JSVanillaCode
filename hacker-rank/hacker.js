@@ -1909,6 +1909,7 @@ function gridSearch(G, P) {
     }
     return "NO";
 }
+/*
 console.log(gridSearch(['1234567890', '0987654321', '1111111111', '1111111111', '2222222222'],
     ['876543', '111111', '111111']));  //YES
 
@@ -1918,7 +1919,7 @@ console.log(gridSearch(['7283455864', '6731158619', '8988242643', '3830589324', 
 console.log(gridSearch(['400453592126560', '114213133098692', '474386082879648', '522356951189169', '887109450487496',
     '252802633388782', '502771484966748', '075975207693780', '511799789562806', '404007454272504', '549043809916080',
     '962410809534811', '445893523733475', '768705303214174', '650629270887160'], ['99', '99']));  //No
-
+*/
 /*
  * Complete the 'happyLadybugs' function below.
  *
@@ -1927,35 +1928,60 @@ console.log(gridSearch(['400453592126560', '114213133098692', '474386082879648',
  */
 
 function happyLadybugs(b) {
-    // Write your code here
-    let flaghappy = true;
-    //check for underscore
-    let flagUnderscore = false;
-    for (let i = 0; i < b.length; i++) {
-        if(b[i]==="_"){
-            flagUnderscore = true;
-        };        
+
+    let bArr = b.split("");
+    //check for underscore and sort    
+    if (bArr.includes("_")) {
+        bArr = bArr.sort().filter(el => el !== "_");
+    }
+    //check if all color has at least one same neighbour
+    let flagNeighbor = true;
+    if (bArr.length === 1) {
+        return "NO";
+    }
+    let i = 1;
+    while (i < bArr.length) {
+        if (i != bArr.length - 1) {
+            if (bArr[i] !== bArr[i - 1] && bArr[i] !== bArr[i + 1]) {
+                flagNeighbor = false;
+                break;
+            }
+        }
+        if (i === bArr.length - 1) {
+            if (bArr[i] !== bArr[i - 1]) {
+                flagNeighbor = false;
+                break;
+            }
+        }
+        i++;
     }
 
-    //check if all color has at leaset one same neighbour
-    let flagNeighbor = true;
-    for (let i = 1; i < b.length-1; i++) {
-        if(b[i]!==b[i-1] && b[i]!==b[i+1]){
-            flagNeighbor = false;
-        }        
-    }
-    if(flaghappy){
+    // const distinctArr = bArr.filter((el, i, arr) => arr.indexOf(el) === i);
+    // console.log(distinctArr);
+
+    if (flagNeighbor) {
         return "YES"
     }
     return "NO";
 }
 
-console.log(happyLadybugs("YYR_B_BR")); //YES
-console.log(happyLadybugs("RBY_YBR"));  //YES
-console.log(happyLadybugs("X_Y_X"));    //NO
-console.log(happyLadybugs("B_RRBR"));   //YES
-console.log(happyLadybugs("AABBC"));    //NO
-console.log(happyLadybugs("AABBC_C"));  //NO
-console.log(happyLadybugs("DD__FQ_QQF"));   //YES
-console.log(happyLadybugs("_"));        //YES
-console.log(happyLadybugs("AABCBC"));   //NO
+console.log(happyLadybugs("YYR_B_BR")==="YES"); //YES
+console.log(happyLadybugs("RBY_YBR")==="YES");  //YES
+console.log(happyLadybugs("X_Y_X")==="NO");    //NO
+console.log(happyLadybugs("B_RRBR")==="YES");   //YES
+console.log(happyLadybugs("__")==="YES");   //YES
+console.log(happyLadybugs("AABBC")==="NO");    //NO
+console.log(happyLadybugs("AABBC_C")==="YES");  //YES
+console.log(happyLadybugs("DD__FQ_QQF")==="YES");   //YES
+console.log(happyLadybugs("_")==="YES");        //YES
+console.log(happyLadybugs("AABCBC")==="NO");   //NO
+console.log(happyLadybugs("G")==="NO");   //NO
+console.log(happyLadybugs("GR")==="NO");   //NO
+console.log(happyLadybugs("_GR_")==="NO");   //NO
+console.log(happyLadybugs("_R_G_")==="NO");   //NO
+console.log(happyLadybugs("R_R_R")==="YES");   //YES
+console.log(happyLadybugs("RRGGBBXX")==="YES");   //YES
+console.log(happyLadybugs("RRGGBBXY")==="NO");   //NO
+console.log(happyLadybugs("BUSLHRDOC_VQKNWMCRJYQQRWOCNQY_NYR_BVYDBBYHQCQQRUDBOUCUCBVVNKYRDCC")==="NO");   //NO
+console.log(happyLadybugs("VANEIO__EVI_AI___NA_V__NOA")==="YES");   //yes
+console.log(happyLadybugs("P______")==="NO");   //NO
