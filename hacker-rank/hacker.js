@@ -1928,9 +1928,9 @@ console.log(gridSearch(['400453592126560', '114213133098692', '474386082879648',
  */
 
 function happyLadybugs(b) {
-
+    //to manipulate let first convert the string to array
     let bArr = b.split("");
-    //check for underscore and sort    
+    //check for underscore and if available sort and filter the underscore out
     if (bArr.includes("_")) {
         bArr = bArr.sort().filter(el => el !== "_");
     }
@@ -1939,9 +1939,15 @@ function happyLadybugs(b) {
     if (bArr.length === 1) {
         return "NO";
     }
-    let i = 1;
+    let i = 0;
     while (i < bArr.length) {
-        if (i != bArr.length - 1) {
+        if (i === 0) {
+            if (bArr[i] !== bArr[i + 1]) {
+                flagNeighbor = false;
+                break;
+            }
+        }
+        if (i > 0 && i < bArr.length - 1) {
             if (bArr[i] !== bArr[i - 1] && bArr[i] !== bArr[i + 1]) {
                 flagNeighbor = false;
                 break;
@@ -1956,6 +1962,7 @@ function happyLadybugs(b) {
         i++;
     }
 
+    //filtering array for 
     // const distinctArr = bArr.filter((el, i, arr) => arr.indexOf(el) === i);
     // console.log(distinctArr);
 
@@ -1965,23 +1972,23 @@ function happyLadybugs(b) {
     return "NO";
 }
 
-console.log(happyLadybugs("YYR_B_BR")==="YES"); //YES
-console.log(happyLadybugs("RBY_YBR")==="YES");  //YES
-console.log(happyLadybugs("X_Y_X")==="NO");    //NO
-console.log(happyLadybugs("B_RRBR")==="YES");   //YES
-console.log(happyLadybugs("__")==="YES");   //YES
-console.log(happyLadybugs("AABBC")==="NO");    //NO
-console.log(happyLadybugs("AABBC_C")==="YES");  //YES
-console.log(happyLadybugs("DD__FQ_QQF")==="YES");   //YES
-console.log(happyLadybugs("_")==="YES");        //YES
-console.log(happyLadybugs("AABCBC")==="NO");   //NO
-console.log(happyLadybugs("G")==="NO");   //NO
-console.log(happyLadybugs("GR")==="NO");   //NO
-console.log(happyLadybugs("_GR_")==="NO");   //NO
-console.log(happyLadybugs("_R_G_")==="NO");   //NO
-console.log(happyLadybugs("R_R_R")==="YES");   //YES
-console.log(happyLadybugs("RRGGBBXX")==="YES");   //YES
-console.log(happyLadybugs("RRGGBBXY")==="NO");   //NO
-console.log(happyLadybugs("BUSLHRDOC_VQKNWMCRJYQQRWOCNQY_NYR_BVYDBBYHQCQQRUDBOUCUCBVVNKYRDCC")==="NO");   //NO
-console.log(happyLadybugs("VANEIO__EVI_AI___NA_V__NOA")==="YES");   //yes
-console.log(happyLadybugs("P______")==="NO");   //NO
+// console.log(happyLadybugs("YYR_B_BR") === "YES"); //YES
+// console.log(happyLadybugs("RBY_YBR") === "YES");  //YES
+// console.log(happyLadybugs("X_Y_X") === "NO");    //NO
+// console.log(happyLadybugs("B_RRBR") === "YES");   //YES
+// console.log(happyLadybugs("__") === "YES");   //YES
+// console.log(happyLadybugs("AABBC") === "NO");    //NO
+// console.log(happyLadybugs("AABBC_C") === "YES");  //YES
+// console.log(happyLadybugs("DD__FQ_QQF") === "YES");   //YES
+// console.log(happyLadybugs("_") === "YES");        //YES
+// console.log(happyLadybugs("AABCBC") === "NO");   //NO
+// console.log(happyLadybugs("G") === "NO");   //NO
+// console.log(happyLadybugs("GR") === "NO");   //NO
+// console.log(happyLadybugs("_GR_") === "NO");   //NO
+// console.log(happyLadybugs("_R_G_") === "NO");   //NO
+// console.log(happyLadybugs("R_R_R") === "YES");   //YES
+// console.log(happyLadybugs("RRGGBBXX") === "YES");   //YES
+// console.log(happyLadybugs("RRGGBBXY") === "NO");   //NO
+// console.log(happyLadybugs("BUSLHRDOC_VQKNWMCRJYQQRWOCNQY_NYR_BVYDBBYHQCQQRUDBOUCUCBVVNKYRDCC") === "NO");   //NO 1
+// console.log(happyLadybugs("MKNNNNMMMK") === "NO");   //NO 2
+// console.log(happyLadybugs("JI_JWHSBIA__JHIWHII_KK__JIBHK__KBS_B") === "NO");   //NO 3
