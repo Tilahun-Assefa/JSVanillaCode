@@ -149,11 +149,79 @@ function arrayManipulation(n, queries) {
  * }
  *
  */
+function Node(data) {
+    this.data = data;
+    this.next = null;
+}
 
 function printLinkedList(head) {
-    const start = head;
+    var start = head;
     while (start) {
         console.log(start.data);
         start = start.next;
     }
+}
+
+// Complete the insertNodeAtHead function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+const SinglyLinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+
+function insertNodeAtHead(head, data) {
+    //if head is null create a node and point with head
+    var node = new SinglyLinkedListNode(data);
+    if (head == null) {
+        head = node;
+    } else {
+        node.next = head;
+        head = node;
+    }
+    return head;
+}
+
+// let lk = insertNodeAtHead(null, 383);
+// lk = insertNodeAtHead(lk, 484);
+// lk = insertNodeAtHead(lk, 392);
+// lk = insertNodeAtHead(lk, 975);
+// lk = insertNodeAtHead(lk, 321);
+
+// printLinkedList(lk);
+
+/*
+ * Complete the 'insertNodeAtPosition' function below.
+ *
+ * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+ * The function accepts following parameters:
+ *  1. INTEGER_SINGLY_LINKED_LIST llist
+ *  2. INTEGER data
+ *  3. INTEGER position
+ */
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+function insertNodeAtPosition(llist, data, position) {
+    // Write your code here
+
 }
