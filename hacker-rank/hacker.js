@@ -1992,3 +1992,29 @@ function happyLadybugs(b) {
 // console.log(happyLadybugs("BUSLHRDOC_VQKNWMCRJYQQRWOCNQY_NYR_BVYDBBYHQCQQRUDBOUCUCBVVNKYRDCC") === "NO");   //NO 1
 // console.log(happyLadybugs("MKNNNNMMMK") === "NO");   //NO 2
 // console.log(happyLadybugs("JI_JWHSBIA__JHIWHII_KK__JIBHK__KBS_B") === "NO");   //NO 3
+
+/*
+ * Complete the 'strangeCounter' function below.
+ *
+ * The function is expected to return a LONG_INTEGER.
+ * The function accepts LONG_INTEGER t as parameter.
+ */
+
+function strangeCounter(t) {
+    // Write your code here
+    let time = 1;
+    let initialValue = 3;
+    let value= initialValue;
+    while (time < t) {
+        time++;
+        if (value === 1) {
+            initialValue *= 2;
+            value = initialValue;
+        } else {
+            value--;
+        }
+    }
+    return value;
+}
+
+console.log(strangeCounter(6));

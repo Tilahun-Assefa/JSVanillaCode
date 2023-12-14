@@ -43,7 +43,7 @@ function showCircle(cX, cY, radius) {
             });
         }, 0);
 
-        setTimeout(() => reject(new Error("Promise error")), 3000)
+        setTimeout(() => reject(new Error("Promise error")), 3000);
     });
 }
 
