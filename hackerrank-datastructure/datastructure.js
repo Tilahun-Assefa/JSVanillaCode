@@ -223,5 +223,19 @@ function insertNodeAtHead(head, data) {
 
 function insertNodeAtPosition(llist, data, position) {
     // Write your code here
+    var node = new SinglyLinkedListNode(data);
+    let cnt = 0;
+    if (llist == null) {
+        llist = node;
+        return llist;
+    }
 
+    var start = llist;
+    while (start.next != null && cnt < position) {
+        start = start.next;
+        cnt++;
+    }
+    start = node;
+    node.next = llist;
+    return llist;
 }
