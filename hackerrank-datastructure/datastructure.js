@@ -229,13 +229,27 @@ function insertNodeAtPosition(llist, data, position) {
         llist = node;
         return llist;
     }
-
+    if (position === 0) {
+        node.next = llist;
+        llist = node;
+        return llist
+    }
     var start = llist;
-    while (start.next != null && cnt < position) {
+    while (start.next != null && cnt < position - 1) {
         start = start.next;
         cnt++;
     }
-    start = node;
-    node.next = llist;
+    let temp = start.next;
+    start.next = node;
+    node.next = temp;
+
     return llist;
 }
+
+let lk = insertNodeAtPosition(null, 383, 2);
+lk = insertNodeAtPosition(lk, 484, 0);
+lk = insertNodeAtPosition(lk, 392, 1);
+lk = insertNodeAtPosition(lk, 975, 1);
+lk = insertNodeAtPosition(lk, 321, 2);
+
+printLinkedList(lk);    //484,975,
