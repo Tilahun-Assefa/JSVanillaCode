@@ -2002,19 +2002,13 @@ function happyLadybugs(b) {
 
 function strangeCounter(t) {
     // Write your code here
-    let time = 1;
-    let initialValue = 3;
-    let value= initialValue;
-    while (time < t) {
-        time++;
-        if (value === 1) {
-            initialValue *= 2;
-            value = initialValue;
-        } else {
-            value--;
-        }
+    let cycle = 3;
+    while (t > cycle) {
+        cycle *= 2;
     }
-    return value;
+    return 2 * cycle - t - 2;
 }
 
-console.log(strangeCounter(6));
+console.log(strangeCounter(4)===6);
+console.log(strangeCounter(10)===12);
+console.log(strangeCounter(25)===21);
