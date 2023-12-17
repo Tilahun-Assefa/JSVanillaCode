@@ -2004,11 +2004,16 @@ function strangeCounter(t) {
     // Write your code here
     let cycle = 3;
     while (t > cycle) {
+        t = t - cycle;
         cycle *= 2;
     }
-    return 2 * cycle - t - 2;
+    return cycle - t + 1;
 }
 
-console.log(strangeCounter(4)===6);
-console.log(strangeCounter(10)===12);
-console.log(strangeCounter(25)===21);
+// console.log(strangeCounter(4) === 6);
+// console.log(strangeCounter(9) === 1);
+// console.log(strangeCounter(25) === 21);
+// console.log(strangeCounter(1) === 3);
+// console.log(strangeCounter(14) === 8);
+// console.log(strangeCounter(20) === 2);
+
