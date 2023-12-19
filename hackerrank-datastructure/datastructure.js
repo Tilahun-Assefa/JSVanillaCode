@@ -307,3 +307,28 @@ function deleteNode(llist, position) {
 // lk = deleteNode(lk, 0);
 // console.log('After deletion');
 // printLinkedList(lk); // 484,975,
+
+/*
+ * Complete the 'reversePrint' function below.
+ *
+ * The function accepts INTEGER_SINGLY_LINKED_LIST llist as parameter.
+ */
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+function reversePrint(llist) {
+  // Write your code here
+  if (list == null) {
+    return;
+  }
+  printReverseList(list.next);
+  console.log(list.value);
+}

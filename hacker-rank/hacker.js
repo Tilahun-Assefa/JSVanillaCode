@@ -1943,12 +1943,3 @@ function happyLadybugs(b) {
     // Write your code here
 
 }
-
-
-
-
-
-
-
-
-
