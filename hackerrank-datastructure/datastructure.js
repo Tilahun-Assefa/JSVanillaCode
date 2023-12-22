@@ -204,7 +204,7 @@ linkedList = insertNodeAtHead(linkedList, "C");
 linkedList = insertNodeAtHead(linkedList, "D");
 linkedList = insertNodeAtHead(linkedList, "E");
 
-printLinkedList(linkedList);
+// printLinkedList(linkedList);
 
 /*
  * Complete the 'insertNodeAtPosition' function below.
@@ -331,7 +331,7 @@ function reversePrint(llist) {
   console.log(llist.data);
 }
 
-reversePrint(linkedList);
+// reversePrint(linkedList);
 /*
  * Complete the 'reverse' function below.
  *
@@ -366,4 +366,4 @@ function reverse(llist) {
   return start;
 }
 
-let reversedLinkedList = reverse(linkedList);
+// let reversedLinkedList = reverse(linkedList);
