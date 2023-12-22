@@ -198,13 +198,13 @@ function insertNodeAtHead(head, data) {
   return head;
 }
 
-// let lk = insertNodeAtHead(null, 383);
-// lk = insertNodeAtHead(lk, 484);
-// lk = insertNodeAtHead(lk, 392);
-// lk = insertNodeAtHead(lk, 975);
-// lk = insertNodeAtHead(lk, 321);
+let linkedList = insertNodeAtHead(null, "A");
+linkedList = insertNodeAtHead(linkedList, "B");
+linkedList = insertNodeAtHead(linkedList, "C");
+linkedList = insertNodeAtHead(linkedList, "D");
+linkedList = insertNodeAtHead(linkedList, "E");
 
-// printLinkedList(lk);
+printLinkedList(linkedList);
 
 /*
  * Complete the 'insertNodeAtPosition' function below.
@@ -287,7 +287,6 @@ function deleteNode(llist, position) {
   let start = llist;
   if (position === 0) {
     llist = llist.next;
-    start.next = null;
     return llist;
   }
 
@@ -298,7 +297,6 @@ function deleteNode(llist, position) {
   if (start.next !== null) {
     const temp = start.next;
     start.next = start.next.next;
-    temp.next = null;
   }
 
   return llist;
@@ -326,9 +324,46 @@ function deleteNode(llist, position) {
 
 function reversePrint(llist) {
   // Write your code here
-  if (list == null) {
+  if (llist == null) {
     return;
   }
-  printReverseList(list.next);
-  console.log(list.value);
+  reversePrint(llist.next);
+  console.log(llist.data);
 }
+
+reversePrint(linkedList);
+/*
+ * Complete the 'reverse' function below.
+ *
+ * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+ * The function accepts INTEGER_SINGLY_LINKED_LIST llist as parameter.
+ */
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+function reverse(llist) {
+  // Write your code here
+  if (llist.next == null) {
+    return llist;
+  }
+  let start = llist;
+  while (start.next !== null) {
+    start = start.next;
+  }
+  let temp = llist;
+  let pos = llist.next;
+  llist = reverse(llist.next);
+  pos.next = temp;
+  temp.next = null;
+  return start;
+}
+
+let reversedLinkedList = reverse(linkedList);
