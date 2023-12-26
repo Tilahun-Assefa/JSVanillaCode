@@ -367,3 +367,43 @@ function reverse(llist) {
 }
 
 // let reversedLinkedList = reverse(linkedList);
+
+// Complete the CompareLists function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+function CompareLists(llist1, llist2) {
+  let flagEqual = true;
+  while (llist1 !== null || llist2 !== null) {
+    if (llist1 === null && llist2 !== null || llist1 !== null && llist2 === null) {
+      flagEqual = false;
+      break;
+    }
+    if (llist1.data !== llist2.data) {
+      flagEqual = false;
+      break;
+    }
+    llist1 = llist1.next;
+    llist2 = llist2.next;
+  }
+  if (!flagEqual) {
+    return 0;
+  }
+  return 1;
+}
+
+let linkedList2 = insertNodeAtHead(null, "A");
+linkedList2 = insertNodeAtHead(linkedList2, "B");
+linkedList2 = insertNodeAtHead(linkedList2, "C");
+linkedList2 = insertNodeAtHead(linkedList2, "D");
+linkedList2 = insertNodeAtHead(linkedList2, "E");
+
+console.log(CompareLists(linkedList, linkedList2) == 1);  //1
+console.log(CompareLists(linkedList, null) == 0);  //1
