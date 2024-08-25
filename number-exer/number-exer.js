@@ -3,7 +3,6 @@ function readNumber() {
     let num;
     do {
         num = prompt("Enter valid number");
-
     } while (!isFinite(num))
 
     if (num === "" || num === null) {

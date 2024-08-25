@@ -1,4 +1,4 @@
-/*function makeWorker() {
+function makeWorker() {
     let name = "Pete";
 
     return function () {
@@ -13,7 +13,7 @@ let work = makeWorker();
 
 // call it
 work(); // what will it show?
-*/
+
 // Look at the code. What will be the result of the call at the last line?
 let phrase = "Hello";
 
@@ -116,4 +116,4 @@ if (true) {
 
 // alert(test); // ReferenceError: test is not defined
 
-alert(globalThis.EventCounts);
+console.log(global.EventCounts);
