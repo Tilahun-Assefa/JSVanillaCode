@@ -8,8 +8,8 @@ const getStudent = () => {
 getStudent().then(res => console.log(res));
 
 //write a function that returns a promise that resolves after a number of milliseconds
-function delay(n) {
-    return new Promise(resolve => setTimeout(resolve, n));
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 (async () => {
