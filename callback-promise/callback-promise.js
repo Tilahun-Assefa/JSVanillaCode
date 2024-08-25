@@ -28,8 +28,8 @@ function addPromise(number1, number2) {
 addPromise(89, 65).then(result => console.log("promise sum: ", result)).catch(err => console.error(err));
 
 const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("Promise Resolve"), 6000);
-    setTimeout(() => reject(new Error("Promise Error")), 6000);
+    setTimeout(() => resolve("Promise Resolve"), 1000);
+    setTimeout(() => reject(new Error("Promise Error")), 1000);
 });
 
 myPromise.then(result => console.log("result: ", result)).catch(err => console.error(err));
