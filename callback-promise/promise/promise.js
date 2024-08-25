@@ -7,10 +7,17 @@ const getStudent = () => {
 
 getStudent().then(res => console.log(res));
 
+let myPromise = new Promise(resolve => setTimeout(resolve, 7000));
+
+myPromise.then(()=>console.log("test")).catch(err=>console.log(err)).finally(console.log("Finally go here"));
+
 //write a function that returns a promise that resolves after a number of milliseconds
 function delay(ms) {
+    // Please note that in this task resolve is called without arguments. We don’t return any value from delay, just ensure the delay.
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+delay(3000).then(() => console.log('runs after 3 seconds'));
 
 (async () => {
     console.time("testing delay");
@@ -35,7 +42,7 @@ function showCircle(cX, cY, radius) {
                 div.removeEventListener('transitionend', handler);
                 resolve(div);
             });
-        }, 0);
+        }, 500);
 
         setTimeout(() => reject(new Error("Promise error")), 3000)
     });
